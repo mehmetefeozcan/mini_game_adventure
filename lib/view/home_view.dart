@@ -27,11 +27,11 @@ class _HomeViewState extends State<HomeView> {
               widget.game.goEpisodes();
               setState(() {});
             }),
-            SizedBox(height: context.highValue),
+            /*  SizedBox(height: context.highValue),
             _menuButton(context, "Ayarlar", () {
-              //widget.game.goEpisodeView();
+              widget.game.goSettings();
               setState(() {});
-            }),
+            }), */
           ],
         ),
       ),

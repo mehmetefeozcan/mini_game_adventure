@@ -22,10 +22,7 @@ class _SettingsViewState extends State<SettingsView> {
               "Ayarlar",
               style: context.textTheme.titleLarge,
             ),
-            _menuButton(context, "Kontrolcü ayarları", () {
-              widget.game.play();
-              setState(() {});
-            }),
+            SizedBox(height: context.highValue),
           ],
         ),
       ),

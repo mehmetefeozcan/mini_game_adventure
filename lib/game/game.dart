@@ -122,7 +122,7 @@ class MyGame extends FlameGame
   }
 
   void goSettings() {
-    gameManager.state = GameState.episode;
+    gameManager.state = GameState.settings;
 
     overlays.remove('home');
     overlays.add('settings');

@@ -31,12 +31,15 @@ class _PauseViewState extends State<PauseView> {
                   setState(() {});
                 },
               ),
-              SizedBox(height: context.highValue),
+              /* SizedBox(height: context.highValue),
               _menuButton(
                 context,
                 "Ayarlar",
-                () {},
-              ),
+                () {
+                  widget.game.goEpisodes();
+                  setState(() {});
+                },
+              ), */
               SizedBox(height: context.highValue),
               _menuButton(
                 context,

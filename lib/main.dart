@@ -6,6 +6,7 @@ import 'package:mini_game_adventure/view/episodes_view.dart';
 import 'package:mini_game_adventure/view/game_view.dart';
 import 'package:mini_game_adventure/view/home_view.dart';
 import 'package:mini_game_adventure/view/pause_view.dart';
+import 'package:mini_game_adventure/view/settings_view.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,7 +22,7 @@ void main() async {
         'game': (context, game) => GameView(game: game),
         'episode': (context, game) => EpisodesView(game: game),
         'pause': (context, game) => PauseView(game: game),
-        'settings': (context, game) => PauseView(game: game),
+        'settings': (context, game) => SettingsView(game: game),
       },
       initialActiveOverlays: const ['home'],
     ),
