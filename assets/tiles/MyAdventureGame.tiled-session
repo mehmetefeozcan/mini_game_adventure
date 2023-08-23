@@ -1,0 +1,73 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "level_03.tmx",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "file.lastUsedOpenFilter": "All Files (*)",
+    "fileStates": {
+        "MyAdventureGameTile.tsx": {
+            "scaleInDock": 0.7406,
+            "scaleInEditor": 1
+        },
+        "level_01.tmx": {
+            "scale": 0.89,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 392.69662921348316,
+                "y": 184.26966292134836
+            }
+        },
+        "level_02.tmx": {
+            "expandedObjectLayers": [
+                8,
+                7
+            ],
+            "scale": 0.8822,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 385.9669009294945,
+                "y": 388.8007254590797
+            }
+        },
+        "level_03.tmx": {
+            "expandedObjectLayers": [
+                3,
+                2
+            ],
+            "scale": 3.1377,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 511.36182554100134,
+                "y": 135.76823788125057
+            }
+        }
+    },
+    "last.imagePath": "/Users/mehmetefeozcan/Desktop/workspace-test/tile_map_game/assets/images/Terrain",
+    "map.height": 23,
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 16,
+    "map.tileWidth": 16,
+    "map.width": 49,
+    "openFiles": [
+        "MyAdventureGameTile.tsx",
+        "level_02.tmx",
+        "level_03.tmx"
+    ],
+    "project": "MyAdventureGame.tiled-project",
+    "property.type": "float",
+    "recentFiles": [
+        "MyAdventureGameTile.tsx",
+        "level_02.tmx",
+        "level_03.tmx",
+        "level_01.tmx"
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    }
+}

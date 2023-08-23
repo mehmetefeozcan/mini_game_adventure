@@ -1,0 +1,37 @@
+name: mini_game_adventure
+description: A new Flutter project.
+publish_to: "none"
+version: 0.1.0
+
+environment:
+  sdk: ">=3.0.6 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  flame: ^1.8.2
+  flame_tiled: ^1.13.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/tiles/
+    - assets/images/
+    - assets/images/HUD/
+    - assets/images/Terrain/
+    - assets/images/Traps/Saw/
+    - assets/images/Background/
+    - assets/images/Items/Fruits/
+    - assets/images/Main Characters/
+    - assets/images/Main Characters/Pink Man/
+    - assets/images/Main Characters/Mask Dude/
+    - assets/images/Main Characters/Ninja Frog/
+    - assets/images/Main Characters/Virtual Guy/
+    - assets/images/Items/Checkpoints/Checkpoint/
