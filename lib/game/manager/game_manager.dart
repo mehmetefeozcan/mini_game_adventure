@@ -1,7 +1,7 @@
 import 'package:mini_game_adventure/game/game.dart';
 import 'package:flame/components.dart';
 
-enum GameState { home, game, pause, episode }
+enum GameState { home, game, pause, episode, settings }
 
 class GameManager extends Component with HasGameRef<MyGame> {
   GameManager();
@@ -11,4 +11,5 @@ class GameManager extends Component with HasGameRef<MyGame> {
   bool get isHome => state == GameState.home;
   bool get isGame => state == GameState.game;
   bool get isEpisode => state == GameState.episode;
+  bool get isSettings => state == GameState.settings;
 }

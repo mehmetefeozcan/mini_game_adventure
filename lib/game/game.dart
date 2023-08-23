@@ -114,11 +114,18 @@ class MyGame extends FlameGame
     });
   }
 
-  void goEpisodeView() {
+  void goEpisodes() {
     gameManager.state = GameState.episode;
 
     overlays.remove('home');
     overlays.add('episode');
+  }
+
+  void goSettings() {
+    gameManager.state = GameState.episode;
+
+    overlays.remove('home');
+    overlays.add('settings');
   }
 
   Future play() async {

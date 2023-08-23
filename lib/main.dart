@@ -21,6 +21,7 @@ void main() async {
         'game': (context, game) => GameView(game: game),
         'episode': (context, game) => EpisodesView(game: game),
         'pause': (context, game) => PauseView(game: game),
+        'settings': (context, game) => PauseView(game: game),
       },
       initialActiveOverlays: const ['home'],
     ),
