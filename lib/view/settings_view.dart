@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:mini_game_adventure/game/core/extension/context_extension.dart';
 import 'package:mini_game_adventure/game/game.dart';
+import 'package:flutter/material.dart';
 
 class SettingsView extends StatefulWidget {
   final MyGame game;

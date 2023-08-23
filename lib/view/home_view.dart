@@ -1,6 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:mini_game_adventure/game/core/extension/context_extension.dart';
+import 'package:mini_game_adventure/game/core/helpers/hive_controller.dart';
 import 'package:mini_game_adventure/game/game.dart';
+import 'package:flutter/material.dart';
 
 class HomeView extends StatefulWidget {
   final MyGame game;
@@ -11,6 +12,22 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+  HiveController hiveController = HiveController();
+
+  @override
+  void initState() {
+    _onInit();
+    super.initState();
+  }
+
+  Future<void> _onInit() async {
+    // for Game Reset or First play
+    //await hiveController.setFirstGameData();
+
+    final data = await hiveController.fetchGameData();
+    print(data);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Material(
