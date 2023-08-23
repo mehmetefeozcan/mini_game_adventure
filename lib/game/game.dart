@@ -22,7 +22,7 @@ class MyGame extends FlameGame
   Player player = Player(character: 'Mask Dude');
   late JoystickComponent joystick;
 
-  List<String> levelNames = ['level_01', 'level_02', 'level_03'];
+  List<String> levelNames = [];
   int currentLevelIndex = 0;
 
   GameManager gameManager = GameManager();

@@ -24,8 +24,14 @@ class _HomeViewState extends State<HomeView> {
     // for Game Reset or First play
     //await hiveController.setFirstGameData();
 
-    final data = await hiveController.fetchGameData();
-    print(data);
+    final gameData = await hiveController.fetchGameData();
+    final levels = await hiveController.fetchLevels();
+
+    for (var level in levels) {
+      widget.game.levelNames.add(level['level']);
+    }
+
+    widget.game.currentLevelIndex = gameData['lastLevel'] - 1;
   }
 
   @override
