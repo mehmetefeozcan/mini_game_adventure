@@ -31,16 +31,16 @@ class HiveController {
     return model;
   }
 
-  updateLevel(int level) async {
+  Future updateLevel(int level) async {
     final gameData = box.get('gameData');
-    if (gameData.lastLevel! < level) {
+    if (gameData['lastLevel']! == level) {
       final data = {
-        "lastLevel": level,
+        "lastLevel": level + 1,
       };
 
       List levels = box.get('levels');
 
-      levels[level - 1].isUnlocked = true;
+      levels[level]['isUnlocked'] = true;
 
       await box.put("gameData", data);
       await box.put("levels", levels);

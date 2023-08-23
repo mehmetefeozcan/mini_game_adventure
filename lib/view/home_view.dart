@@ -27,6 +27,7 @@ class _HomeViewState extends State<HomeView> {
     final gameData = await hiveController.fetchGameData();
     final levels = await hiveController.fetchLevels();
 
+    print(gameData);
     for (var level in levels) {
       widget.game.levelNames.add(level['level']);
     }

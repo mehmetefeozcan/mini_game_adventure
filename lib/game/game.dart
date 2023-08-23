@@ -1,14 +1,14 @@
-import 'dart:async';
-
-import 'package:flame/components.dart';
-import 'package:flame/events.dart';
-import 'package:flame/game.dart';
-import 'package:flame/input.dart';
-import 'package:flutter/painting.dart';
-import 'package:mini_game_adventure/game/components/player.dart';
-import 'package:mini_game_adventure/game/level.dart';
+import 'package:mini_game_adventure/game/core/helpers/hive_controller.dart';
 import 'package:mini_game_adventure/game/manager/game_manager.dart';
 import 'package:mini_game_adventure/game/widgets/jump_button.dart';
+import 'package:mini_game_adventure/game/components/player.dart';
+import 'package:mini_game_adventure/game/level.dart';
+import 'package:flame/components.dart';
+import 'package:flutter/painting.dart';
+import 'package:flame/events.dart';
+import 'package:flame/input.dart';
+import 'package:flame/game.dart';
+import 'dart:async';
 
 class MyGame extends FlameGame
     with
@@ -26,6 +26,7 @@ class MyGame extends FlameGame
   int currentLevelIndex = 0;
 
   GameManager gameManager = GameManager();
+  HiveController hiveController = HiveController();
 
   @override
   FutureOr<void> onLoad() async {
@@ -85,8 +86,12 @@ class MyGame extends FlameGame
     }
   }
 
-  void loadNextLevel() {
+  void loadNextLevel() async {
     removeWhere((component) => component is Level);
+    final lastLevel = await hiveController.fetchGameData();
+    if (currentLevelIndex == lastLevel['lastLevel'] - 1) {
+      await hiveController.updateLevel(currentLevelIndex + 1);
+    }
 
     if (currentLevelIndex < levelNames.length - 1) {
       currentLevelIndex++;

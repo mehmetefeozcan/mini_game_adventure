@@ -1,3 +1,4 @@
+import 'package:mini_game_adventure/game/core/extension/context_extension.dart';
 import 'package:mini_game_adventure/game/game.dart';
 import 'package:flutter/material.dart';
 
@@ -15,21 +16,13 @@ class _GameViewState extends State<GameView> {
   Widget build(BuildContext context) {
     return Material(
       color: Colors.transparent,
-      child: Stack(
-        children: [
-          Positioned(
-            right: 20,
-            top: 20,
-            child: Image.asset(
-              'assets/images/heart.png',
-              width: 24,
-              height: 24,
-            ),
-          ),
-          Positioned(
-            left: 20,
-            top: 20,
-            child: InkWell(
+      child: Padding(
+        padding: EdgeInsets.symmetric(
+            horizontal: context.highValue, vertical: context.highValue),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            InkWell(
               onTap: () {
                 widget.game.pause();
                 setState(() {});
@@ -39,8 +32,13 @@ class _GameViewState extends State<GameView> {
                 color: Colors.grey.shade600,
               ),
             ),
-          ),
-        ],
+            Image.asset(
+              'assets/images/heart.png',
+              width: 24,
+              height: 24,
+            ),
+          ],
+        ),
       ),
     );
   }
