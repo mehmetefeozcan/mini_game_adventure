@@ -63,16 +63,14 @@ class _HomeViewState extends State<HomeView> {
   Widget _menuButton(BuildContext context, String title, void Function() func) {
     return InkWell(
       onTap: func,
-      child: Container(
-        width: context.width * 0.2,
-        height: context.height * 0.1,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          border: Border.all(color: Colors.grey),
-        ),
-        child: Center(
-          child: Text(title),
-        ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(
+            title,
+            style: const TextStyle(fontSize: 36),
+          ),
+        ],
       ),
     );
   }

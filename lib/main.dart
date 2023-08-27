@@ -18,18 +18,29 @@ void main() async {
   await Hive.initFlutter();
   await Hive.openBox('gameBox');
 
-  MyGame game = MyGame();
-  runApp(
-    GameWidget(
-      game: game,
-      overlayBuilderMap: <String, Widget Function(BuildContext, MyGame)>{
-        'home': (context, game) => HomeView(game: game),
-        'game': (context, game) => GameView(game: game),
-        'episode': (context, game) => EpisodesView(game: game),
-        'pause': (context, game) => PauseView(game: game),
-        'settings': (context, game) => SettingsView(game: game),
-      },
-      initialActiveOverlays: const ['home'],
-    ),
-  );
+  runApp(const MyApp());
+}
+
+MyGame game = MyGame();
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: ThemeData(fontFamily: "MultiTypePixel"),
+      home: GameWidget(
+        game: game,
+        overlayBuilderMap: <String, Widget Function(BuildContext, MyGame)>{
+          'home': (context, game) => HomeView(game: game),
+          'game': (context, game) => GameView(game: game),
+          'episode': (context, game) => EpisodesView(game: game),
+          'pause': (context, game) => PauseView(game: game),
+          'settings': (context, game) => SettingsView(game: game),
+        },
+        initialActiveOverlays: const ['home'],
+      ),
+    );
+  }
 }
