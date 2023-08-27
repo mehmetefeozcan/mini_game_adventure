@@ -21,13 +21,11 @@ class _HomeViewState extends State<HomeView> {
   }
 
   Future<void> _onInit() async {
-    // for Game Reset or First play
-    //await hiveController.setFirstGameData();
+    await hiveController.setFirstGameData();
 
     final gameData = await hiveController.fetchGameData();
     final levels = await hiveController.fetchLevels();
 
-    print(gameData);
     for (var level in levels) {
       widget.game.levelNames.add(level['level']);
     }

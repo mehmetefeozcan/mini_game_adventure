@@ -3,20 +3,25 @@ import 'package:hive_flutter/hive_flutter.dart';
 class HiveController {
   final box = Hive.box('gameBox');
 
-  // for first open
+  // for open game
   Future<void> setFirstGameData() async {
-    final data = {
-      "lastLevel": 1,
-    };
+    final isDataSetted = box.get('gameData') != null;
+    final isLevelsSetted = box.get('levels') != null;
 
-    final levels = [
-      {"level": "level_01", "isUnlocked": true},
-      {"level": "level_02", "isUnlocked": false},
-      {"level": "level_03", "isUnlocked": false},
-    ];
+    if (!isLevelsSetted && !isDataSetted) {
+      final data = {
+        "lastLevel": 1,
+      };
 
-    await box.put('gameData', data);
-    await box.put('levels', levels);
+      final levels = [
+        {"level": "level_01", "isUnlocked": true},
+        {"level": "level_02", "isUnlocked": false},
+        {"level": "level_03", "isUnlocked": false},
+      ];
+
+      await box.put('gameData', data);
+      await box.put('levels', levels);
+    }
   }
 
   Future fetchGameData() async {
