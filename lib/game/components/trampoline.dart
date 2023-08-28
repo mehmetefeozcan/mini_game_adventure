@@ -33,7 +33,6 @@ class Trampoline extends SpriteAnimationComponent
       ),
     );
 
-    debugMode = true;
     return super.onLoad();
   }
 
