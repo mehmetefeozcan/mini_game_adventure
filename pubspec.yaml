@@ -30,6 +30,7 @@ flutter:
     - assets/images/HUD/
     - assets/images/Terrain/
     - assets/images/Traps/Saw/
+    - assets/images/Traps/Fan/
     - assets/images/Background/
     - assets/images/Items/Fruits/
     - assets/images/Main Characters/

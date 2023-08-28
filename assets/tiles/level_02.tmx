@@ -34,9 +34,9 @@
  <objectgroup id="7" name="SpawnPoints">
   <object id="127" name="Player" type="Player" x="128" y="288" width="32" height="32"/>
   <object id="130" name="Checkpoint" type="Checkpoint" x="688" y="272" width="48" height="48"/>
-  <object id="131" name="Apple" type="Fruit" x="512" y="256" width="32" height="32"/>
-  <object id="132" name="Apple" type="Fruit" x="208" y="240" width="32" height="32"/>
-  <object id="168" name="Apple" type="Fruit" x="576" y="224" width="32" height="32"/>
+  <object id="131" name="Apple" type="Fruit" x="512" y="240" width="32" height="32"/>
+  <object id="132" name="Apple" type="Fruit" x="208" y="223" width="32" height="32"/>
+  <object id="168" name="Apple" type="Fruit" x="576" y="208" width="32" height="32"/>
   <object id="169" name="Saw" type="Saw" x="352" y="304" width="32" height="32">
    <properties>
     <property name="isVertical" type="bool" value="false"/>

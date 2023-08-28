@@ -1,17 +1,15 @@
-import 'dart:async';
-
+import 'package:mini_game_adventure/game/core/helpers/custom_hitbox.dart';
+import 'package:mini_game_adventure/game/components/checkpoint.dart';
+import 'package:mini_game_adventure/game/core/helpers/utils.dart';
+import 'package:mini_game_adventure/game/widgets/collision.dart';
+import 'package:mini_game_adventure/game/components/fruit.dart';
+import 'package:mini_game_adventure/game/components/fan.dart';
+import 'package:mini_game_adventure/game/components/saw.dart';
+import 'package:mini_game_adventure/game/game.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flutter/services.dart';
-import 'package:mini_game_adventure/game/components/checkpoint.dart';
-import 'package:mini_game_adventure/game/components/fruit.dart';
-import 'package:mini_game_adventure/game/components/saw.dart';
-import 'package:mini_game_adventure/game/core/helpers/custom_hitbox.dart';
-import 'package:mini_game_adventure/game/core/helpers/utils.dart';
-
-import 'package:mini_game_adventure/game/game.dart';
-
-import 'package:mini_game_adventure/game/widgets/collision.dart';
+import 'dart:async';
 
 enum PlayerState {
   idle,
@@ -62,6 +60,8 @@ class Player extends SpriteAnimationGroupComponent
     height: 28,
   );
 
+  double _dt = 0;
+
   @override
   FutureOr<void> onLoad() {
     _loadAllAnimations();
@@ -79,6 +79,7 @@ class Player extends SpriteAnimationGroupComponent
 
   @override
   void update(double dt) {
+    _dt = dt;
     accumulatedTime += dt;
 
     while (accumulatedTime >= fixedDeltaTime) {
@@ -102,6 +103,7 @@ class Player extends SpriteAnimationGroupComponent
       if (other is Fruit) other.collidedWithPlayer();
       if (other is Saw) _respawn();
       if (other is Checkpoint) _reachedCheckpoint();
+      if (other is Fan) _fanJump(_dt, other.jumpSpeed);
     }
     super.onCollisionStart(intersectionPoints, other);
   }
@@ -175,6 +177,13 @@ class Player extends SpriteAnimationGroupComponent
 
     velocity.x = horizontalMovement * moveSpeed;
     position.x += velocity.x * dt;
+  }
+
+  void _fanJump(double dt, double jumpSpeed) {
+    velocity.y = -jumpSpeed;
+    position.y += velocity.y * dt;
+    isOnGround = false;
+    hasJumped = false;
   }
 
   void _playerJump(double dt) {

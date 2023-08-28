@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flame/components.dart';
 import 'package:flame_tiled/flame_tiled.dart';
 import 'package:mini_game_adventure/game/components/checkpoint.dart';
+import 'package:mini_game_adventure/game/components/fan.dart';
 import 'package:mini_game_adventure/game/components/fruit.dart';
 import 'package:mini_game_adventure/game/components/player.dart';
 import 'package:mini_game_adventure/game/components/saw.dart';
@@ -73,6 +74,15 @@ class Level extends World {
               size: Vector2(spawnPoint.width, spawnPoint.height),
             );
             add(saw);
+            break;
+          case 'Fan':
+            final jumpSpeed = spawnPoint.properties.getValue('jumpSpeed');
+            final fan = Fan(
+              jumpSpeed: jumpSpeed,
+              position: Vector2(spawnPoint.x, spawnPoint.y),
+              size: Vector2(spawnPoint.width, spawnPoint.height),
+            );
+            add(fan);
             break;
           case 'Checkpoint':
             final checkpoint = Checkpoint(

@@ -18,8 +18,8 @@ class Checkpoint extends SpriteAnimationComponent
   @override
   FutureOr<void> onLoad() {
     add(RectangleHitbox(
-      size: Vector2(16, 32),
-      position: Vector2(4, 0),
+      size: Vector2(size.x / 2, size.y),
+      position: Vector2(size.x / 8, 0),
       collisionType: CollisionType.passive,
     ));
 
@@ -32,6 +32,7 @@ class Checkpoint extends SpriteAnimationComponent
         textureSize: Vector2.all(64),
       ),
     );
+
     return super.onLoad();
   }
 

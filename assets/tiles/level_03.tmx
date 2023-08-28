@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="49" height="23" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="33">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="49" height="23" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="58">
  <tileset firstgid="1" source="MyAdventureGameTile.tsx"/>
  <layer id="1" name="Background" width="49" height="23">
   <properties>
@@ -18,58 +18,45 @@
 214,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,214,
 214,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,214,
 214,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,214,
-214,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,13,14,15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,214,
-214,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,13,14,15,0,0,0,0,0,13,14,14,15,214,
-214,0,0,0,0,0,0,0,0,0,0,13,14,15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,214,
-214,0,0,0,0,0,0,0,35,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,13,14,15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,214,
-214,0,0,0,0,0,0,36,37,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,36,37,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,214,
-214,0,0,0,0,0,35,58,59,0,0,0,0,0,0,0,0,0,0,0,0,0,0,35,58,59,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,214,
-214,35,0,0,0,0,0,36,37,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,36,37,36,37,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,214,
-214,35,35,0,0,0,0,58,59,0,0,0,0,0,0,0,0,0,0,0,0,35,0,0,58,59,58,59,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,214,
+214,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,214,
+214,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,13,14,14,15,214,
+214,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,214,
+214,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,13,14,15,0,0,0,0,0,0,214,
+214,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,214,
+214,0,0,0,0,0,16,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,13,14,15,0,0,0,0,0,0,0,0,0,0,0,214,
+214,35,0,0,0,0,38,0,0,0,0,0,0,0,7,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,36,37,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,214,
+214,35,35,0,0,0,60,0,0,0,0,0,0,0,29,31,0,0,0,0,0,0,0,0,0,0,0,0,0,0,58,59,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,214,
 214,7,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,9,214,
 214,29,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,31,214,
 211,51,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,53,211
 </data>
  </layer>
  <objectgroup id="2" name="SpawnPoints">
-  <object id="20" name="Player" type="Player" x="55" y="288" width="32" height="32"/>
-  <object id="21" name="Apple" type="Fruit" x="48" y="224" width="32" height="32"/>
-  <object id="22" name="Apple" type="Fruit" x="186" y="192" width="32" height="32"/>
-  <object id="23" name="Apple" type="Fruit" x="298" y="160" width="32" height="32"/>
-  <object id="24" name="Apple" type="Fruit" x="192" y="288" width="32" height="32"/>
-  <object id="25" name="Apple" type="Fruit" x="224" y="288" width="32" height="32"/>
-  <object id="26" name="Apple" type="Fruit" x="208" y="256" width="32" height="32"/>
-  <object id="27" name="Apple" type="Fruit" x="592" y="288" width="32" height="32"/>
-  <object id="28" name="Apple" type="Fruit" x="624" y="288" width="32" height="32"/>
-  <object id="29" name="Apple" type="Fruit" x="608" y="256" width="32" height="32"/>
-  <object id="30" name="Apple" type="Fruit" x="646" y="176" width="32" height="32"/>
-  <object id="31" name="Checkpoint" type="Checkpoint" x="704" y="160" width="64" height="48"/>
-  <object id="32" name="Saw" type="Saw" x="640" y="112" width="32" height="32">
+  <object id="36" name="Player" type="Player" x="56" y="283" width="32" height="32"/>
+  <object id="44" name="Fan" type="Fan" x="336" y="288" width="32" height="32">
    <properties>
-    <property name="isVertical" type="bool" value="true"/>
-    <property name="offNeg" type="float" value="5"/>
-    <property name="offPos" type="float" value="10"/>
+    <property name="jumpSpeed" type="float" value="280"/>
    </properties>
   </object>
+  <object id="45" name="Checkpoint" type="Checkpoint" x="713" y="160" width="48" height="48"/>
+  <object id="54" name="Apple" type="Fruit" x="336" y="192" width="32" height="32"/>
+  <object id="55" name="Apple" type="Fruit" x="224" y="256" width="32" height="32"/>
+  <object id="56" name="Apple" type="Fruit" x="480" y="256" width="32" height="32"/>
+  <object id="57" name="Apple" type="Fruit" x="634" y="208" width="32" height="32"/>
  </objectgroup>
  <objectgroup id="3" name="Collisions">
   <object id="1" x="0" y="0" width="16" height="368"/>
   <object id="3" x="16" y="0" width="752" height="16"/>
   <object id="4" x="768" y="0" width="16" height="368"/>
   <object id="5" x="16" y="320" width="752" height="48"/>
-  <object id="6" x="16" y="288" width="16" height="32"/>
-  <object id="7" x="32" y="304" width="16" height="16"/>
-  <object id="8" x="96" y="272" width="16" height="16"/>
-  <object id="9" x="128" y="240" width="16" height="16"/>
-  <object id="10" x="112" y="256" width="32" height="64"/>
-  <object id="11" x="176" y="224" width="48" height="16"/>
-  <object id="12" x="288" y="192" width="48" height="16"/>
-  <object id="13" x="480" y="240" width="48" height="16"/>
-  <object id="14" x="576" y="208" width="48" height="16"/>
   <object id="15" x="704" y="208" width="64" height="16"/>
-  <object id="16" x="384" y="256" width="32" height="64"/>
-  <object id="17" x="416" y="288" width="32" height="32"/>
-  <object id="18" x="368" y="272" width="16" height="16"/>
-  <object id="19" x="336" y="304" width="16" height="16"/>
+  <object id="46" x="624" y="240" width="48" height="16"/>
+  <object id="47" x="544" y="272" width="48" height="16"/>
+  <object id="48" x="480" y="288" width="32" height="32"/>
+  <object id="49" x="224" y="288" width="32" height="32"/>
+  <object id="50" x="16" y="288" width="16" height="16"/>
+  <object id="51" x="16" y="304" width="16" height="16"/>
+  <object id="52" x="32" y="304" width="16" height="16"/>
+  <object id="53" x="96" y="272" width="16" height="48"/>
  </objectgroup>
 </map>
