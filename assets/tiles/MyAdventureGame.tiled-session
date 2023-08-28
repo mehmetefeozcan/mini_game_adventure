@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "level_03.tmx",
+    "activeFile": "level_02.tmx",
     "expandedProjectPaths": [
         "."
     ],
@@ -29,8 +29,8 @@
             "scale": 0.8822,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 425.6404443436863,
-                "y": 303.78598957152576
+                "x": 153.59328950351397,
+                "y": 104.28474268873276
             }
         },
         "level_03.tmx": {
@@ -42,7 +42,7 @@
             "selectedLayer": 1,
             "viewCenter": {
                 "x": 399.3553008595988,
-                "y": 278.17574021012416
+                "y": 276.981852913085
             }
         }
     },
@@ -55,8 +55,7 @@
     "openFiles": [
         "MyAdventureGameTile.tsx",
         "level_01.tmx",
-        "level_02.tmx",
-        "level_03.tmx"
+        "level_02.tmx"
     ],
     "project": "MyAdventureGame.tiled-project",
     "property.type": "float",
