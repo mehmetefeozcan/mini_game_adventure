@@ -51,7 +51,7 @@ class _EpisodesViewState extends State<EpisodesView> {
                           Text("Bölümler", style: context.textTheme.titleLarge),
                         ],
                       ),
-                      SizedBox(height: context.normalValue),
+                      SizedBox(height: context.highValue),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: _episodes(),
@@ -87,8 +87,8 @@ class _EpisodesViewState extends State<EpisodesView> {
               _episodeCard(context, i + 1, levels[i]['isUnlocked']),
               SizedBox(width: context.highValue),
               SizedBox(
-                width: context.width * 0.1,
-                height: context.height * 0.08,
+                width: context.width * 0.06,
+                height: context.height * 0.1,
               )
             ],
           ),
@@ -96,7 +96,7 @@ class _EpisodesViewState extends State<EpisodesView> {
       }
       // vertical space
       if (i != levels.length) {
-        episodes.add(SizedBox(height: context.highValue));
+        episodes.add(SizedBox(height: context.mediumValue));
       }
     }
     setState(() {});
@@ -106,23 +106,40 @@ class _EpisodesViewState extends State<EpisodesView> {
   Widget _episodeCard(BuildContext context, int episode, bool isUnlocked) {
     return InkWell(
       onTap: () {
-        widget.game.playCustomEpisode(episode);
-        setState(() {});
+        if (isUnlocked) {
+          widget.game.playCustomEpisode(episode);
+          setState(() {});
+        }
       },
       child: Container(
-        width: context.width * 0.1,
-        height: context.height * 0.08,
+        padding: EdgeInsets.zero,
+        width: context.width * 0.06,
+        height: context.height * 0.1,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           border: Border.all(
             color: Colors.grey,
           ),
         ),
-        child: Center(
-          child: Text(
-            "$episode",
-            style: context.textTheme.titleMedium,
-          ),
+        child: Stack(
+          children: [
+            Center(
+              child: Text(
+                "$episode",
+                style: context.textTheme.titleLarge,
+              ),
+            ),
+            isUnlocked
+                ? SizedBox()
+                : Center(
+                    child: Icon(
+                      Icons.lock_outline,
+                      weight: 700,
+                      size: 32,
+                      color: Colors.redAccent.withOpacity(0.6),
+                    ),
+                  )
+          ],
         ),
       ),
     );

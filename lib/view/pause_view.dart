@@ -61,7 +61,7 @@ class _PauseViewState extends State<PauseView> {
       onTap: func,
       child: Text(
         title,
-        style: context.textTheme.titleMedium,
+        style: context.textTheme.headlineSmall,
       ),
     );
   }

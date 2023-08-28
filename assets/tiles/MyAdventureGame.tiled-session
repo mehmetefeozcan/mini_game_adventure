@@ -14,11 +14,11 @@
             "scaleInEditor": 1
         },
         "level_01.tmx": {
-            "scale": 0.4261,
+            "scale": 0.9332,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": -212.39145740436516,
-                "y": 396.6205116169914
+                "x": 397.0210030004287,
+                "y": 253.96485212173172
             }
         },
         "level_02.tmx": {
@@ -29,8 +29,8 @@
             "scale": 0.8822,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 388.23396055316255,
-                "y": 391.0677850827477
+                "x": 391.63454998866473,
+                "y": 184.76535932895035
             }
         },
         "level_03.tmx": {
@@ -38,11 +38,11 @@
                 3,
                 2
             ],
-            "scale": 0.9126,
-            "selectedLayer": 0,
+            "scale": 0.8376,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 413.6532982686829,
-                "y": 199.43019943019942
+                "x": 399.3553008595988,
+                "y": 278.17574021012416
             }
         }
     },
@@ -54,16 +54,17 @@
     "map.width": 49,
     "openFiles": [
         "MyAdventureGameTile.tsx",
+        "level_01.tmx",
         "level_02.tmx",
         "level_03.tmx"
     ],
     "project": "MyAdventureGame.tiled-project",
     "property.type": "float",
     "recentFiles": [
+        "MyAdventureGameTile.tsx",
         "level_01.tmx",
         "level_02.tmx",
-        "level_03.tmx",
-        "MyAdventureGameTile.tsx"
+        "level_03.tmx"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {
