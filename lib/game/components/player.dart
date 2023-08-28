@@ -287,6 +287,8 @@ class Player extends SpriteAnimationGroupComponent
     velocity = Vector2.zero();
     position = startingPosition;
     _updatePlayerState();
+
+    gameRef.gameManager.health.value -= 1;
     Future.delayed(canMoveDuration, () => gotHit = false);
   }
 

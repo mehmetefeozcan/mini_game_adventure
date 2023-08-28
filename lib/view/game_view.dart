@@ -1,6 +1,9 @@
+// ignore_for_file: unrelated_type_equality_checks
+
 import 'package:mini_game_adventure/game/core/extension/context_extension.dart';
 import 'package:mini_game_adventure/game/game.dart';
 import 'package:flutter/material.dart';
+import 'package:mini_game_adventure/main.dart';
 
 class GameView extends StatefulWidget {
   final MyGame game;
@@ -32,14 +35,33 @@ class _GameViewState extends State<GameView> {
                 color: Colors.grey.shade600,
               ),
             ),
+            _health(context),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _health(BuildContext context) {
+    return ValueListenableBuilder(
+      valueListenable: game.gameManager.health,
+      builder: (context, value, child) {
+        List<Widget> items = [];
+
+        for (var i = 0; i < game.gameManager.health.value; i++) {
+          items.add(
             Image.asset(
               'assets/images/heart.png',
               width: 24,
               height: 24,
             ),
-          ],
-        ),
-      ),
+          );
+        }
+        return Row(
+          mainAxisSize: MainAxisSize.min,
+          children: items,
+        );
+      },
     );
   }
 }

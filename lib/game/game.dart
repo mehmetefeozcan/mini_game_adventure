@@ -46,6 +46,11 @@ class MyGame extends FlameGame
   void update(double dt) {
     updateJoystick();
 
+    if (gameManager.health.value == 0 && gameManager.isGame) {
+      gameOver();
+      return;
+    }
+
     super.update(dt);
   }
 
@@ -102,6 +107,8 @@ class MyGame extends FlameGame
   }
 
   Future _loadLevel() async {
+    gameManager.health.value = 2;
+
     await Future.delayed(const Duration(seconds: 1), () async {
       Level world = Level(
         player: player,
@@ -158,10 +165,30 @@ class MyGame extends FlameGame
     resumeEngine();
   }
 
-  void quit() {
+  void restart() async {
+    gameManager.health.value = 2;
     gameManager.state = GameState.game;
+    resumeEngine();
+
     removeWhere((component) => component is Level);
-    overlays.removeAll(['pause', 'game']);
+
+    await _loadLevel();
+    overlays.remove('gameOver');
+    overlays.add('game');
+  }
+
+  void gameOver() {
+    gameManager.state = GameState.gameOver;
+
+    overlays.remove('game');
+    overlays.add('gameOver');
+    pauseEngine();
+  }
+
+  void quit() {
+    gameManager.state = GameState.home;
+    removeWhere((component) => component is Level);
+    overlays.removeAll(['pause', 'gameOver', 'game']);
     overlays.add('home');
     resumeEngine();
   }
