@@ -1,4 +1,5 @@
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:mini_game_adventure/game/game.dart';
 
 class HiveController {
   final box = Hive.box('gameBox');
@@ -36,19 +37,24 @@ class HiveController {
     return model;
   }
 
-  Future updateLevel(int level) async {
-    final gameData = box.get('gameData');
-    if (gameData['lastLevel']! == level) {
-      final data = {
-        "lastLevel": level + 1,
-      };
+  Future updateLevel(int level, MyGame game) async {
+    try {
+      final gameData = box.get('gameData');
+      if (gameData['lastLevel']! == level) {
+        final data = {
+          "lastLevel": level + 1,
+        };
 
-      List levels = box.get('levels');
+        List levels = box.get('levels');
 
-      levels[level]['isUnlocked'] = true;
+        levels[level]['isUnlocked'] = true;
 
-      await box.put("gameData", data);
-      await box.put("levels", levels);
+        await box.put("gameData", data);
+        await box.put("levels", levels);
+      }
+    } catch (e) {
+      print("[Hive Controller] error: $e");
+      game.quit();
     }
   }
 }

@@ -95,7 +95,7 @@ class MyGame extends FlameGame
     removeWhere((component) => component is Level);
     final lastLevel = await hiveController.fetchGameData();
     if (currentLevelIndex == lastLevel['lastLevel'] - 1) {
-      await hiveController.updateLevel(currentLevelIndex + 1);
+      await hiveController.updateLevel(currentLevelIndex + 1, this);
     }
 
     if (currentLevelIndex < levelNames.length - 1) {
@@ -108,6 +108,7 @@ class MyGame extends FlameGame
 
   Future _loadLevel() async {
     gameManager.health.value = 2;
+    player.size = Vector2(34, 34);
 
     await Future.delayed(const Duration(seconds: 1), () async {
       Level world = Level(
@@ -129,14 +130,14 @@ class MyGame extends FlameGame
   void goEpisodes() {
     gameManager.state = GameState.episode;
 
-    overlays.remove('home');
+    removeOverlays();
     overlays.add('episode');
   }
 
   void goSettings() {
     gameManager.state = GameState.settings;
 
-    overlays.remove('home');
+    removeOverlays();
     overlays.add('settings');
   }
 
@@ -147,7 +148,7 @@ class MyGame extends FlameGame
 
     await _loadLevel();
 
-    overlays.remove('home');
+    removeOverlays();
     overlays.add('game');
   }
 
@@ -173,22 +174,40 @@ class MyGame extends FlameGame
     removeWhere((component) => component is Level);
 
     await _loadLevel();
-    overlays.remove('gameOver');
+    removeOverlays();
     overlays.add('game');
   }
 
   void gameOver() {
     gameManager.state = GameState.gameOver;
 
-    overlays.remove('game');
+    removeOverlays();
     overlays.add('gameOver');
     pauseEngine();
+  }
+
+  void finishLevel() {
+    const reachedCheckpointDuration = Duration(milliseconds: 500);
+    Future.delayed(reachedCheckpointDuration, () {
+      player.size = Vector2.zero();
+      player.reachedCheckpoint = false;
+
+      removeOverlays();
+      overlays.add('finish');
+    });
+  }
+
+  void nextLevel() {
+    loadNextLevel();
+
+    removeOverlays();
+    overlays.add('game');
   }
 
   void quit() {
     gameManager.state = GameState.home;
     removeWhere((component) => component is Level);
-    overlays.removeAll(['pause', 'gameOver', 'game']);
+    removeOverlays();
     overlays.add('home');
     resumeEngine();
   }
@@ -201,7 +220,19 @@ class MyGame extends FlameGame
     currentLevelIndex = episode - 1;
     await _loadLevel();
 
-    overlays.remove('episode');
+    removeOverlays();
     overlays.add('game');
   }
+
+  removeOverlays() => overlays.removeAll(
+        [
+          'home',
+          'game',
+          'episode',
+          'pause',
+          'settings',
+          'gameOver',
+          'finish',
+        ],
+      );
 }

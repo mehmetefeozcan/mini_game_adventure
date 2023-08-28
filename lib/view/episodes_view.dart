@@ -48,7 +48,8 @@ class _EpisodesViewState extends State<EpisodesView> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text("Bölümler", style: context.textTheme.titleLarge),
+                          Text("Bölümler",
+                              style: context.textTheme.headlineSmall),
                         ],
                       ),
                       SizedBox(height: context.highValue),
@@ -130,7 +131,7 @@ class _EpisodesViewState extends State<EpisodesView> {
               ),
             ),
             isUnlocked
-                ? SizedBox()
+                ? const SizedBox()
                 : Center(
                     child: Icon(
                       Icons.lock_outline,

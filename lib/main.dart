@@ -1,4 +1,5 @@
 import 'package:mini_game_adventure/view/episodes_view.dart';
+import 'package:mini_game_adventure/view/finish_episode_view.dart';
 import 'package:mini_game_adventure/view/game_over_view.dart';
 import 'package:mini_game_adventure/view/settings_view.dart';
 import 'package:mini_game_adventure/view/pause_view.dart';
@@ -41,6 +42,7 @@ class MyApp extends StatelessWidget {
           'pause': (context, game) => PauseView(game: game),
           'settings': (context, game) => SettingsView(game: game),
           'gameOver': (context, game) => GameOverView(game: game),
+          'finish': (context, game) => FinishEpisodeView(game: game),
         },
         initialActiveOverlays: const ['home'],
       ),

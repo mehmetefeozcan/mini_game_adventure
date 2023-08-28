@@ -75,6 +75,7 @@ class Player extends SpriteAnimationGroupComponent
         size: Vector2(hitbox.width, hitbox.height),
       ),
     );
+
     return super.onLoad();
   }
 
@@ -302,15 +303,6 @@ class Player extends SpriteAnimationGroupComponent
 
     current = PlayerState.disappearing;
 
-    const reachedCheckpointDuration = Duration(milliseconds: 350);
-    Future.delayed(reachedCheckpointDuration, () {
-      position = Vector2.zero();
-
-      const waitToChangeDuration = Duration(seconds: 3);
-      Future.delayed(waitToChangeDuration, () {
-        game.loadNextLevel();
-        reachedCheckpoint = false;
-      });
-    });
+    game.finishLevel();
   }
 }
