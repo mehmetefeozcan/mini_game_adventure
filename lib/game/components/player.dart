@@ -1,3 +1,4 @@
+import 'package:mini_game_adventure/game/components/trampoline.dart';
 import 'package:mini_game_adventure/game/core/helpers/custom_hitbox.dart';
 import 'package:mini_game_adventure/game/components/checkpoint.dart';
 import 'package:mini_game_adventure/game/core/helpers/utils.dart';
@@ -104,6 +105,7 @@ class Player extends SpriteAnimationGroupComponent
       if (other is Saw) _respawn();
       if (other is Checkpoint) _reachedCheckpoint();
       if (other is Fan) _fanJump(_dt, other.jumpSpeed);
+      if (other is Trampoline) _fanJump(_dt, other.jumpSpeed);
     }
     super.onCollisionStart(intersectionPoints, other);
   }

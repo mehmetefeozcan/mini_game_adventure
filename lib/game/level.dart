@@ -7,6 +7,7 @@ import 'package:mini_game_adventure/game/components/fan.dart';
 import 'package:mini_game_adventure/game/components/fruit.dart';
 import 'package:mini_game_adventure/game/components/player.dart';
 import 'package:mini_game_adventure/game/components/saw.dart';
+import 'package:mini_game_adventure/game/components/trampoline.dart';
 import 'package:mini_game_adventure/game/widgets/background_tile.dart';
 import 'package:mini_game_adventure/game/widgets/collision.dart';
 
@@ -83,6 +84,15 @@ class Level extends World {
               size: Vector2(spawnPoint.width, spawnPoint.height),
             );
             add(fan);
+            break;
+          case 'Trampoline':
+            final jumpSpeed = spawnPoint.properties.getValue('jumpSpeed');
+            final trampoline = Trampoline(
+              jumpSpeed: jumpSpeed,
+              position: Vector2(spawnPoint.x, spawnPoint.y),
+              size: Vector2(spawnPoint.width, spawnPoint.height),
+            );
+            add(trampoline);
             break;
           case 'Checkpoint':
             final checkpoint = Checkpoint(
