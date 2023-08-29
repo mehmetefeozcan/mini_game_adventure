@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "level_02.tmx",
+    "activeFile": "level_04.tmx",
     "expandedProjectPaths": [
         "."
     ],
@@ -15,10 +15,10 @@
         },
         "level_01.tmx": {
             "scale": 0.9332,
-            "selectedLayer": 0,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 397.0210030004287,
-                "y": 253.96485212173172
+                "x": 391.66309472781825,
+                "y": 184.31204457779683
             }
         },
         "level_02.tmx": {
@@ -35,35 +35,47 @@
         },
         "level_03.tmx": {
             "expandedObjectLayers": [
-                3,
-                2
+                2,
+                3
             ],
             "scale": 0.8376,
-            "selectedLayer": 1,
+            "selectedLayer": 2,
             "viewCenter": {
                 "x": 399.3553008595988,
                 "y": 276.981852913085
             }
+        },
+        "level_04.tmx": {
+            "expandedObjectLayers": [
+                2
+            ],
+            "scale": 0.8894,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 78.14256802338654,
+                "y": -82.07780526197439
+            }
         }
     },
     "last.imagePath": "/Users/mehmetefeozcan/Desktop/workspace-test/tile_map_game/assets/images/Terrain",
-    "map.height": 23,
+    "map.height": 22,
     "map.lastUsedFormat": "tmx",
     "map.tileHeight": 16,
     "map.tileWidth": 16,
-    "map.width": 49,
+    "map.width": 46,
     "openFiles": [
-        "MyAdventureGameTile.tsx",
-        "level_01.tmx",
-        "level_02.tmx"
+        "level_04.tmx",
+        "level_03.tmx",
+        "level_01.tmx"
     ],
     "project": "MyAdventureGame.tiled-project",
     "property.type": "float",
     "recentFiles": [
-        "MyAdventureGameTile.tsx",
         "level_01.tmx",
-        "level_02.tmx",
-        "level_03.tmx"
+        "level_03.tmx",
+        "level_04.tmx",
+        "MyAdventureGameTile.tsx",
+        "level_02.tmx"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {

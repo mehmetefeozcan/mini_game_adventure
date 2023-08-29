@@ -18,6 +18,7 @@ class HiveController {
         {"level": "level_01", "isUnlocked": true},
         {"level": "level_02", "isUnlocked": false},
         {"level": "level_03", "isUnlocked": false},
+        {"level": "level_04", "isUnlocked": false},
       ];
 
       await box.put('gameData', data);
