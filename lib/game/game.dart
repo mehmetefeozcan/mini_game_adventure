@@ -28,6 +28,8 @@ class MyGame extends FlameGame
   GameManager gameManager = GameManager();
   HiveController hiveController = HiveController();
 
+  bool isInited = false;
+
   @override
   FutureOr<void> onLoad() async {
     // Load all images into cache
@@ -45,6 +47,17 @@ class MyGame extends FlameGame
   @override
   void update(double dt) {
     updateJoystick();
+    if (gameManager.isGame) {
+      if (isInited) {
+        cam.viewport.position = Vector2(-size.x / 2, 0);
+        /*  print(cam.viewport.position);
+        print(cam.viewport.size); */
+
+        if (782 < player.position.x) {
+          cam.viewport.position += Vector2(-size.x / 2, 0);
+        }
+      }
+    }
 
     if (gameManager.health.value == 0 && gameManager.isGame) {
       gameOver();
@@ -116,14 +129,18 @@ class MyGame extends FlameGame
         levelName: levelNames[currentLevelIndex],
       );
 
-      cam = CameraComponent.withFixedResolution(
+      /* cam = CameraComponent.withFixedResolution(
         world: world,
         width: size.x,
         height: size.y,
-      );
-      cam.viewfinder.anchor = Anchor.topLeft;
+      ); */
+
+      cam = CameraComponent(world: world);
+      cam.viewfinder.anchor = Anchor.topCenter;
 
       await addAll([world, cam]);
+
+      isInited = true;
     });
   }
 
