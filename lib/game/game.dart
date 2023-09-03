@@ -29,6 +29,7 @@ class MyGame extends FlameGame
   HiveController hiveController = HiveController();
 
   bool isInited = false;
+  double maxWidth = 780;
 
   @override
   FutureOr<void> onLoad() async {
@@ -50,11 +51,14 @@ class MyGame extends FlameGame
     if (gameManager.isGame) {
       if (isInited) {
         cam.viewport.position = Vector2(-size.x / 2, 0);
-        /*  print(cam.viewport.position);
-        print(cam.viewport.size); */
 
-        if (782 < player.position.x) {
-          cam.viewport.position += Vector2(-size.x / 2, 0);
+        if (maxWidth == 1600) {
+          if (maxWidth * 0.4 < player.position.x) {
+            cam.viewport.position += Vector2(-size.x * 0.8, 0);
+          }
+          if (maxWidth * 0.8 < player.position.x) {
+            cam.viewport.position += Vector2(-size.x * 0.24, 0);
+          }
         }
       }
     }
@@ -139,6 +143,8 @@ class MyGame extends FlameGame
       cam.viewfinder.anchor = Anchor.topCenter;
 
       await addAll([world, cam]);
+      print(world.level.size);
+      maxWidth = world.level.size.x;
 
       isInited = true;
     });
