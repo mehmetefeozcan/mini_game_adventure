@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:mini_game_adventure/game/game.dart';
 
@@ -54,7 +55,9 @@ class HiveController {
         await box.put("levels", levels);
       }
     } catch (e) {
-      print("[Hive Controller] error: $e");
+      if (kDebugMode) {
+        print("[Hive Controller] error: $e");
+      }
       game.quit();
     }
   }

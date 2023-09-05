@@ -29,6 +29,7 @@ class _SettingsViewState extends State<SettingsView> {
     );
   }
 
+  // ignore: unused_element
   Widget _menuButton(BuildContext context, String title, void Function() func) {
     return InkWell(
       onTap: func,

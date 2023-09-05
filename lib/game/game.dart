@@ -143,7 +143,7 @@ class MyGame extends FlameGame
       cam.viewfinder.anchor = Anchor.topCenter;
 
       await addAll([world, cam]);
-      print(world.level.size);
+      
       maxWidth = world.level.size.x;
 
       isInited = true;
