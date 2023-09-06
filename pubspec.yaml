@@ -34,10 +34,10 @@ flutter:
     - assets/images/Traps/Saw/
     - assets/images/Traps/Fan/
     - assets/images/Background/
-    - assets/images/Enemies/Pig/
     - assets/images/Items/Fruits/
+    - assets/images/Enemies/Rino/
     - assets/images/Main Characters/
-    - assets/images/Enemies/King Pig/
+    - assets/images/Enemies/AngryPig/
     - assets/images/Traps/Trampoline/
     - assets/images/Main Characters/Pink Man/
     - assets/images/Main Characters/Mask Dude/

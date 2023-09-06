@@ -6,7 +6,7 @@ import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'dart:async';
 
-enum PigState { idle, running, jumping, falling, hit, appearing, disappearing }
+enum PigState { idle, running, walking, hit, appearing, disappearing }
 
 class Pig extends SpriteAnimationGroupComponent
     with HasGameRef<MyGame>, CollisionCallbacks {
@@ -17,8 +17,7 @@ class Pig extends SpriteAnimationGroupComponent
   late final SpriteAnimation hitAnimation;
   late final SpriteAnimation idleAnimation;
   late final SpriteAnimation runningAnimation;
-  late final SpriteAnimation jumpingAnimation;
-  late final SpriteAnimation fallingAnimation;
+  late final SpriteAnimation walkAnimation;
   late final SpriteAnimation appearingAnimation;
   late final SpriteAnimation disappearingAnimation;
   final double _stepTime = 0.08;
@@ -31,7 +30,7 @@ class Pig extends SpriteAnimationGroupComponent
   bool hasJumped = false;
   bool isFaceRight = true;
 
-  double moveSpeed = 30;
+  double moveSpeed = 20;
   double horizontalMovement = -1;
   Vector2 velocity = Vector2.zero();
   Vector2 startingPosition = Vector2.zero();
@@ -59,7 +58,7 @@ class Pig extends SpriteAnimationGroupComponent
         size: Vector2(hitbox.width, hitbox.height),
       ),
     );
-
+    //debugMode = true;
     return super.onLoad();
   }
 
@@ -82,11 +81,10 @@ class Pig extends SpriteAnimationGroupComponent
   }
 
   void _loadAllAnimations() async {
-    idleAnimation = _spriteAnimation('Idle', 11);
-    runningAnimation = _spriteAnimation('Run', 6);
-    jumpingAnimation = _spriteAnimation('Jump', 1);
-    fallingAnimation = _spriteAnimation('Fall', 1);
-    hitAnimation = _spriteAnimation('Hit', 2)..loop = false;
+    idleAnimation = _spriteAnimation('Idle', 9);
+    runningAnimation = _spriteAnimation('Run', 12);
+    walkAnimation = _spriteAnimation('Walk', 16);
+    hitAnimation = _spriteAnimation('Hit 1', 5)..loop = false;
     appearingAnimation = _specialSpriteAnimation('Appearing', 7);
     disappearingAnimation = _specialSpriteAnimation('Desappearing', 7);
 
@@ -94,8 +92,7 @@ class Pig extends SpriteAnimationGroupComponent
     animations = {
       PigState.idle: idleAnimation,
       PigState.running: runningAnimation,
-      PigState.jumping: jumpingAnimation,
-      PigState.falling: fallingAnimation,
+      PigState.walking: walkAnimation,
       PigState.hit: hitAnimation,
       PigState.appearing: appearingAnimation,
       PigState.disappearing: disappearingAnimation,
@@ -107,11 +104,11 @@ class Pig extends SpriteAnimationGroupComponent
 
   SpriteAnimation _spriteAnimation(String state, int amount) {
     return SpriteAnimation.fromFrameData(
-      game.images.fromCache('Enemies/Pig/$state (34x28).png'),
+      game.images.fromCache('Enemies/AngryPig/$state (36x30).png'),
       SpriteAnimationData.sequenced(
         amount: amount,
         stepTime: _stepTime,
-        textureSize: Vector2(34, 28),
+        textureSize: Vector2(36, 30),
       ),
     );
   }
@@ -202,13 +199,7 @@ class Pig extends SpriteAnimationGroupComponent
     PigState playerState = PigState.idle;
 
     // Check if moving, set running
-    if (velocity.x > 0 || velocity.x < 0) playerState = PigState.running;
-
-    // check if Falling set to falling
-    if (velocity.y > 0) playerState = PigState.falling;
-
-    // Checks if jumping, set to jumping
-    if (velocity.y < 0) playerState = PigState.jumping;
+    if (velocity.x > 0 || velocity.x < 0) playerState = PigState.walking;
 
     current = playerState;
   }

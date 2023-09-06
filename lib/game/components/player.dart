@@ -71,7 +71,7 @@ class Player extends SpriteAnimationGroupComponent
         size: Vector2(hitbox.width, hitbox.height),
       ),
     );
-
+    //debugMode = true;
     return super.onLoad();
   }
 
@@ -99,10 +99,11 @@ class Player extends SpriteAnimationGroupComponent
       Set<Vector2> intersectionPoints, PositionComponent other) {
     if (!reachedCheckpoint) {
       if (other is Fruit) other.collidedWithPlayer();
-      if (other is Saw || other is Pig) _respawn();
+      if (other is Saw || other is KingPig) _respawn();
       if (other is Checkpoint) _reachedCheckpoint();
       if (other is Fan) _fanJump(_dt, other.jumpSpeed);
       if (other is Trampoline) _fanJump(_dt, other.jumpSpeed);
+      if (other is Pig) _respawn();
     }
     super.onCollisionStart(intersectionPoints, other);
   }
@@ -300,5 +301,11 @@ class Player extends SpriteAnimationGroupComponent
     current = PlayerState.disappearing;
 
     game.finishLevel();
+  }
+
+  void _checkHeadDamage(Pig other) {
+    print('player ${y - hitbox.offsetY}');
+    print('pig ${other.position.y + other.hitbox.offsetY}');
+    print(y - hitbox.offsetY < other.position.y + other.hitbox.offsetY);
   }
 }

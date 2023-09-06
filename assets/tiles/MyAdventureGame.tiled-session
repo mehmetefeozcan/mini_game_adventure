@@ -10,7 +10,7 @@
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
         "MyAdventureGameTile.tsx": {
-            "scaleInDock": 0.7406,
+            "scaleInDock": 2.1446,
             "scaleInEditor": 1
         },
         "level_01.tmx": {
@@ -49,11 +49,11 @@
             "expandedObjectLayers": [
                 2
             ],
-            "scale": 1.1236,
+            "scale": 0.8049,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 799.6618013527946,
-                "y": 178.88928444286222
+                "x": 799.4781960491987,
+                "y": 177.66182134426637
             }
         }
     },
