@@ -1,15 +1,10 @@
-import 'dart:async';
-
-import 'package:flame/components.dart';
-import 'package:flame_tiled/flame_tiled.dart';
-import 'package:mini_game_adventure/game/components/checkpoint.dart';
-import 'package:mini_game_adventure/game/components/fan.dart';
-import 'package:mini_game_adventure/game/components/fruit.dart';
-import 'package:mini_game_adventure/game/components/player.dart';
-import 'package:mini_game_adventure/game/components/saw.dart';
-import 'package:mini_game_adventure/game/components/trampoline.dart';
+import 'package:mini_game_adventure/game/manager/game_manager.dart';
 import 'package:mini_game_adventure/game/widgets/background_tile.dart';
 import 'package:mini_game_adventure/game/widgets/collision.dart';
+import 'package:mini_game_adventure/game/components/index.dart';
+import 'package:flame_tiled/flame_tiled.dart';
+import 'package:flame/components.dart';
+import 'dart:async';
 
 class Level extends World {
   late TiledComponent level;
@@ -18,6 +13,12 @@ class Level extends World {
 
   Level({required this.player, required this.levelName});
   List<CollisionBlock> collisionBlocks = [];
+  GameManager gameManager = GameManager();
+
+  Enemy enemy = Enemy(
+    position: Vector2(0, 0),
+    character: 'Pig',
+  );
 
   @override
   FutureOr<void> onLoad() async {
@@ -55,6 +56,12 @@ class Level extends World {
             player.position = Vector2(spawnPoint.x, spawnPoint.y);
             add(player);
             break;
+
+          case 'Enemy':
+            enemy.position = Vector2(spawnPoint.x, spawnPoint.y);
+            add(enemy);
+            break;
+
           case 'Fruit':
             final fruit = Fruit(
               fruit: spawnPoint.name,
@@ -63,6 +70,7 @@ class Level extends World {
             );
             add(fruit);
             break;
+
           case 'Saw':
             final isVertical = spawnPoint.properties.getValue('isVertical');
             final offNeg = spawnPoint.properties.getValue('offNeg');
@@ -76,6 +84,7 @@ class Level extends World {
             );
             add(saw);
             break;
+
           case 'Fan':
             final jumpSpeed = spawnPoint.properties.getValue('jumpSpeed');
             final fan = Fan(
@@ -85,6 +94,7 @@ class Level extends World {
             );
             add(fan);
             break;
+
           case 'Trampoline':
             final jumpSpeed = spawnPoint.properties.getValue('jumpSpeed');
             final trampoline = Trampoline(
@@ -94,6 +104,7 @@ class Level extends World {
             );
             add(trampoline);
             break;
+
           case 'Checkpoint':
             final checkpoint = Checkpoint(
               position: Vector2(spawnPoint.x, spawnPoint.y),
@@ -133,5 +144,6 @@ class Level extends World {
       }
     }
     player.collisionBlocks = collisionBlocks;
+    enemy.collisionBlocks = collisionBlocks;
   }
 }

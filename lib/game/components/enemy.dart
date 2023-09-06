@@ -1,14 +1,12 @@
-import 'package:mini_game_adventure/game/components/index.dart';
 import 'package:mini_game_adventure/game/core/helpers/custom_hitbox.dart';
 import 'package:mini_game_adventure/game/core/helpers/utils.dart';
 import 'package:mini_game_adventure/game/widgets/collision.dart';
 import 'package:mini_game_adventure/game/game.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
-import 'package:flutter/services.dart';
 import 'dart:async';
 
-enum PlayerState {
+enum EnemyState {
   idle,
   running,
   jumping,
@@ -18,10 +16,10 @@ enum PlayerState {
   disappearing
 }
 
-class Player extends SpriteAnimationGroupComponent
-    with HasGameRef<MyGame>, KeyboardHandler, CollisionCallbacks {
+class Enemy extends SpriteAnimationGroupComponent
+    with HasGameRef<MyGame>, CollisionCallbacks {
   String character;
-  Player({position, required this.character}) : super(position: position);
+  Enemy({position, required this.character}) : super(position: position);
 
   late final SpriteAnimation hitAnimation;
   late final SpriteAnimation idleAnimation;
@@ -30,7 +28,7 @@ class Player extends SpriteAnimationGroupComponent
   late final SpriteAnimation fallingAnimation;
   late final SpriteAnimation appearingAnimation;
   late final SpriteAnimation disappearingAnimation;
-  final double _stepTime = 0.05;
+  final double _stepTime = 0.08;
   final double _gravity = 9.8;
   final double _jumpForce = 240;
   final double _terminalVelocity = 300;
@@ -39,10 +37,9 @@ class Player extends SpriteAnimationGroupComponent
   bool isOnGround = false;
   bool hasJumped = false;
   bool isFaceRight = true;
-  bool reachedCheckpoint = false;
 
-  double moveSpeed = 100;
-  double horizontalMovement = 0;
+  double moveSpeed = 30;
+  double horizontalMovement = -1;
   Vector2 velocity = Vector2.zero();
   Vector2 startingPosition = Vector2.zero();
 
@@ -51,13 +48,11 @@ class Player extends SpriteAnimationGroupComponent
 
   List<CollisionBlock> collisionBlocks = [];
   CustomHitbox hitbox = CustomHitbox(
-    offsetX: 10,
-    offsetY: 4,
-    width: 14,
-    height: 28,
+    offsetX: 11,
+    offsetY: 8,
+    width: 18,
+    height: 20,
   );
-
-  double _dt = 0;
 
   @override
   FutureOr<void> onLoad() {
@@ -77,11 +72,10 @@ class Player extends SpriteAnimationGroupComponent
 
   @override
   void update(double dt) {
-    _dt = dt;
     accumulatedTime += dt;
 
     while (accumulatedTime >= fixedDeltaTime) {
-      if (!gotHit && !reachedCheckpoint) {
+      if (!gotHit) {
         _updatePlayerState();
         _updatePlayerMovement(fixedDeltaTime);
         _checkHorizontalCollisions();
@@ -97,62 +91,40 @@ class Player extends SpriteAnimationGroupComponent
   @override
   void onCollisionStart(
       Set<Vector2> intersectionPoints, PositionComponent other) {
-    if (!reachedCheckpoint) {
-      if (other is Fruit) other.collidedWithPlayer();
-      if (other is Saw) _respawn();
-      if (other is Checkpoint) _reachedCheckpoint();
-      if (other is Fan) _fanJump(_dt, other.jumpSpeed);
-      if (other is Trampoline) _fanJump(_dt, other.jumpSpeed);
-    }
     super.onCollisionStart(intersectionPoints, other);
-  }
-
-  @override
-  bool onKeyEvent(RawKeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
-    horizontalMovement = 0;
-    final isRightKeyPressed =
-        keysPressed.contains(LogicalKeyboardKey.arrowRight);
-    final isLeftKeyPressed = keysPressed.contains(LogicalKeyboardKey.arrowLeft);
-
-    hasJumped = keysPressed.contains(LogicalKeyboardKey.space);
-
-    horizontalMovement += isLeftKeyPressed ? -1 : 0;
-    horizontalMovement += isRightKeyPressed ? 1 : 0;
-
-    return super.onKeyEvent(event, keysPressed);
   }
 
   void _loadAllAnimations() async {
     idleAnimation = _spriteAnimation('Idle', 11);
-    runningAnimation = _spriteAnimation('Run', 12);
+    runningAnimation = _spriteAnimation('Run', 6);
     jumpingAnimation = _spriteAnimation('Jump', 1);
     fallingAnimation = _spriteAnimation('Fall', 1);
-    hitAnimation = _spriteAnimation('Hit', 7)..loop = false;
+    hitAnimation = _spriteAnimation('Hit', 2)..loop = false;
     appearingAnimation = _specialSpriteAnimation('Appearing', 7);
     disappearingAnimation = _specialSpriteAnimation('Desappearing', 7);
 
     // List of all Animations
     animations = {
-      PlayerState.idle: idleAnimation,
-      PlayerState.running: runningAnimation,
-      PlayerState.jumping: jumpingAnimation,
-      PlayerState.falling: fallingAnimation,
-      PlayerState.hit: hitAnimation,
-      PlayerState.appearing: appearingAnimation,
-      PlayerState.disappearing: disappearingAnimation,
+      EnemyState.idle: idleAnimation,
+      EnemyState.running: runningAnimation,
+      EnemyState.jumping: jumpingAnimation,
+      EnemyState.falling: fallingAnimation,
+      EnemyState.hit: hitAnimation,
+      EnemyState.appearing: appearingAnimation,
+      EnemyState.disappearing: disappearingAnimation,
     };
 
     // Set Current Animation
-    current = PlayerState.idle;
+    current = EnemyState.idle;
   }
 
   SpriteAnimation _spriteAnimation(String state, int amount) {
     return SpriteAnimation.fromFrameData(
-      game.images.fromCache('Main Characters/$character/$state (32x32).png'),
+      game.images.fromCache('Enemies/$character/$state (34x28).png'),
       SpriteAnimationData.sequenced(
         amount: amount,
         stepTime: _stepTime,
-        textureSize: Vector2.all(32),
+        textureSize: Vector2(34, 28),
       ),
     );
   }
@@ -171,7 +143,6 @@ class Player extends SpriteAnimationGroupComponent
 
   void _updatePlayerMovement(double dt) {
     if (hasJumped && isOnGround) _playerJump(dt);
-
     // if (velocity.y > _gravity) isOnGround = false; // optional
 
     velocity.x = horizontalMovement * moveSpeed;
@@ -197,13 +168,15 @@ class Player extends SpriteAnimationGroupComponent
       if (!block.isPlatform) {
         if (checkCollision(this, block)) {
           if (velocity.x > 0) {
-            velocity.x = 0;
+            _delayAndFlip(-1);
             position.x = block.x - hitbox.offsetX - hitbox.width;
+
             break;
           }
           if (velocity.x < 0) {
-            velocity.x = 0;
+            _delayAndFlip(1);
             position.x = block.x + block.width + hitbox.width + hitbox.offsetX;
+
             break;
           }
         }
@@ -246,59 +219,27 @@ class Player extends SpriteAnimationGroupComponent
   }
 
   void _updatePlayerState() {
-    PlayerState playerState = PlayerState.idle;
-
-    if (velocity.x < 0 && scale.x > 0) {
-      flipHorizontallyAroundCenter();
-    } else if (velocity.x > 0 && scale.x < 0) {
-      flipHorizontallyAroundCenter();
-    }
+    EnemyState playerState = EnemyState.idle;
 
     // Check if moving, set running
-    if (velocity.x > 0 || velocity.x < 0) playerState = PlayerState.running;
+    if (velocity.x > 0 || velocity.x < 0) playerState = EnemyState.running;
 
     // check if Falling set to falling
-    if (velocity.y > 0) playerState = PlayerState.falling;
+    if (velocity.y > 0) playerState = EnemyState.falling;
 
     // Checks if jumping, set to jumping
-    if (velocity.y < 0) playerState = PlayerState.jumping;
+    if (velocity.y < 0) playerState = EnemyState.jumping;
 
     current = playerState;
   }
 
-  void _respawn() async {
-    const canMoveDuration = Duration(milliseconds: 400);
-    gotHit = true;
-    current = PlayerState.hit;
+  Future _delayAndFlip(double movement) async {
+    velocity.x = 0;
+    horizontalMovement = 0;
+    await Future.delayed(const Duration(milliseconds: 500));
 
-    await animationTicker?.completed;
-    animationTicker?.reset();
+    flipHorizontallyAroundCenter();
 
-    scale.x = 1;
-    position = startingPosition - Vector2.all(32);
-    current = PlayerState.appearing;
-
-    await animationTicker?.completed;
-    animationTicker?.reset();
-
-    velocity = Vector2.zero();
-    position = startingPosition;
-    _updatePlayerState();
-
-    gameRef.gameManager.health.value -= 1;
-    Future.delayed(canMoveDuration, () => gotHit = false);
-  }
-
-  void _reachedCheckpoint() {
-    reachedCheckpoint = true;
-    if (scale.x > 0) {
-      position = position - Vector2.all(32);
-    } else if (scale.x < 0) {
-      position = position + Vector2(32, -32);
-    }
-
-    current = PlayerState.disappearing;
-
-    game.finishLevel();
+    horizontalMovement = movement;
   }
 }
