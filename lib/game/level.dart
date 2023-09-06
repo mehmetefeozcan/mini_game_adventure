@@ -87,8 +87,10 @@ class Level extends World {
 
           case 'Fan':
             final jumpSpeed = spawnPoint.properties.getValue('jumpSpeed');
+            final fanSpeed = spawnPoint.properties.getValue('fanSpeed');
             final fan = Fan(
               jumpSpeed: jumpSpeed,
+              fanSpeed: fanSpeed,
               position: Vector2(spawnPoint.x, spawnPoint.y),
               size: Vector2(spawnPoint.width, spawnPoint.height),
             );

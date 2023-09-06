@@ -7,20 +7,20 @@ import 'package:mini_game_adventure/game/game.dart';
 class Fan extends SpriteAnimationComponent
     with HasGameRef<MyGame>, CollisionCallbacks {
   final double jumpSpeed;
+  final double fanSpeed;
   Fan({
     this.jumpSpeed = 100,
+    this.fanSpeed = 0.2,
     position,
     size,
   }) : super(position: position, size: size);
-
-  static const double fanSpeed = 0.2;
 
   @override
   FutureOr<void> onLoad() {
     add(
       RectangleHitbox(
-          size: Vector2(size.x, size.y + size.y / 6),
-          position: Vector2(0, -(size.y / 6))),
+          size: Vector2(size.x, size.y + size.y / 4),
+          position: Vector2(0, -(size.y / 2))),
     );
 
     animation = SpriteAnimation.fromFrameData(
