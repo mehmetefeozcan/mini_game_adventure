@@ -6,7 +6,7 @@ import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'dart:async';
 
-enum EnemyState {
+enum KingPigState {
   idle,
   running,
   jumping,
@@ -16,10 +16,11 @@ enum EnemyState {
   disappearing
 }
 
-class Enemy extends SpriteAnimationGroupComponent
+class KingPig extends SpriteAnimationGroupComponent
     with HasGameRef<MyGame>, CollisionCallbacks {
-  String character;
-  Enemy({position, required this.character}) : super(position: position);
+  KingPig({
+    position,
+  }) : super(position: position);
 
   late final SpriteAnimation hitAnimation;
   late final SpriteAnimation idleAnimation;
@@ -88,14 +89,8 @@ class Enemy extends SpriteAnimationGroupComponent
     super.update(dt);
   }
 
-  @override
-  void onCollisionStart(
-      Set<Vector2> intersectionPoints, PositionComponent other) {
-    super.onCollisionStart(intersectionPoints, other);
-  }
-
   void _loadAllAnimations() async {
-    idleAnimation = _spriteAnimation('Idle', 11);
+    idleAnimation = _spriteAnimation('Idle', 12);
     runningAnimation = _spriteAnimation('Run', 6);
     jumpingAnimation = _spriteAnimation('Jump', 1);
     fallingAnimation = _spriteAnimation('Fall', 1);
@@ -105,26 +100,26 @@ class Enemy extends SpriteAnimationGroupComponent
 
     // List of all Animations
     animations = {
-      EnemyState.idle: idleAnimation,
-      EnemyState.running: runningAnimation,
-      EnemyState.jumping: jumpingAnimation,
-      EnemyState.falling: fallingAnimation,
-      EnemyState.hit: hitAnimation,
-      EnemyState.appearing: appearingAnimation,
-      EnemyState.disappearing: disappearingAnimation,
+      KingPigState.idle: idleAnimation,
+      KingPigState.running: runningAnimation,
+      KingPigState.jumping: jumpingAnimation,
+      KingPigState.falling: fallingAnimation,
+      KingPigState.hit: hitAnimation,
+      KingPigState.appearing: appearingAnimation,
+      KingPigState.disappearing: disappearingAnimation,
     };
 
     // Set Current Animation
-    current = EnemyState.idle;
+    current = KingPigState.idle;
   }
 
   SpriteAnimation _spriteAnimation(String state, int amount) {
     return SpriteAnimation.fromFrameData(
-      game.images.fromCache('Enemies/$character/$state (34x28).png'),
+      game.images.fromCache('Enemies/King Pig/$state (38x28).png'),
       SpriteAnimationData.sequenced(
         amount: amount,
         stepTime: _stepTime,
-        textureSize: Vector2(34, 28),
+        textureSize: Vector2(38, 28),
       ),
     );
   }
@@ -147,13 +142,6 @@ class Enemy extends SpriteAnimationGroupComponent
 
     velocity.x = horizontalMovement * moveSpeed;
     position.x += velocity.x * dt;
-  }
-
-  void _fanJump(double dt, double jumpSpeed) {
-    velocity.y = -jumpSpeed;
-    position.y += velocity.y * dt;
-    isOnGround = false;
-    hasJumped = false;
   }
 
   void _playerJump(double dt) {
@@ -219,16 +207,16 @@ class Enemy extends SpriteAnimationGroupComponent
   }
 
   void _updatePlayerState() {
-    EnemyState playerState = EnemyState.idle;
+    KingPigState playerState = KingPigState.idle;
 
     // Check if moving, set running
-    if (velocity.x > 0 || velocity.x < 0) playerState = EnemyState.running;
+    if (velocity.x > 0 || velocity.x < 0) playerState = KingPigState.running;
 
     // check if Falling set to falling
-    if (velocity.y > 0) playerState = EnemyState.falling;
+    if (velocity.y > 0) playerState = KingPigState.falling;
 
     // Checks if jumping, set to jumping
-    if (velocity.y < 0) playerState = EnemyState.jumping;
+    if (velocity.y < 0) playerState = KingPigState.jumping;
 
     current = playerState;
   }

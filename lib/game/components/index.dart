@@ -1,5 +1,5 @@
 export 'checkpoint.dart';
-export 'enemy.dart';
+export 'pig.dart';
 export 'fan.dart';
 export 'fruit.dart';
 export 'player.dart';

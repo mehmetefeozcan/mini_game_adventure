@@ -1,3 +1,4 @@
+import 'package:mini_game_adventure/game/components/king_pig.dart';
 import 'package:mini_game_adventure/game/manager/game_manager.dart';
 import 'package:mini_game_adventure/game/widgets/background_tile.dart';
 import 'package:mini_game_adventure/game/widgets/collision.dart';
@@ -15,10 +16,8 @@ class Level extends World {
   List<CollisionBlock> collisionBlocks = [];
   GameManager gameManager = GameManager();
 
-  Enemy enemy = Enemy(
-    position: Vector2(0, 0),
-    character: 'Pig',
-  );
+  Pig pig = Pig(position: Vector2(0, 0));
+  KingPig kingPig = KingPig(position: Vector2(0, 0));
 
   @override
   FutureOr<void> onLoad() async {
@@ -58,8 +57,13 @@ class Level extends World {
             break;
 
           case 'Enemy':
-            enemy.position = Vector2(spawnPoint.x, spawnPoint.y);
-            add(enemy);
+            if (spawnPoint.name == 'Pig') {
+              pig.position = Vector2(spawnPoint.x, spawnPoint.y);
+              add(pig);
+            } else if (spawnPoint.name == 'King Pig') {
+              kingPig.position = Vector2(spawnPoint.x, spawnPoint.y);
+              add(kingPig);
+            }
             break;
 
           case 'Fruit':
@@ -146,6 +150,7 @@ class Level extends World {
       }
     }
     player.collisionBlocks = collisionBlocks;
-    enemy.collisionBlocks = collisionBlocks;
+    pig.collisionBlocks = collisionBlocks;
+    kingPig.collisionBlocks = collisionBlocks;
   }
 }
