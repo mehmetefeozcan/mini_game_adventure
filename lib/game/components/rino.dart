@@ -6,29 +6,20 @@ import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'dart:async';
 
-enum KingPigState {
-  idle,
-  running,
-  jumping,
-  falling,
-  hit,
-  appearing,
-  disappearing
-}
+enum RinoState { idle, running, hit, appearing, disappearing }
 
-class KingPig extends SpriteAnimationGroupComponent
+class Rino extends SpriteAnimationGroupComponent
     with HasGameRef<MyGame>, CollisionCallbacks {
-  KingPig({
+  Rino({
     position,
   }) : super(position: position);
 
   late final SpriteAnimation hitAnimation;
   late final SpriteAnimation idleAnimation;
   late final SpriteAnimation runningAnimation;
-  late final SpriteAnimation jumpingAnimation;
-  late final SpriteAnimation fallingAnimation;
   late final SpriteAnimation appearingAnimation;
   late final SpriteAnimation disappearingAnimation;
+
   final double _stepTime = 0.08;
   final double _gravity = 9.8;
   final double _jumpForce = 240;
@@ -52,7 +43,7 @@ class KingPig extends SpriteAnimationGroupComponent
     offsetX: 11,
     offsetY: 8,
     width: 18,
-    height: 20,
+    height: 24,
   );
 
   @override
@@ -90,36 +81,32 @@ class KingPig extends SpriteAnimationGroupComponent
   }
 
   void _loadAllAnimations() async {
-    idleAnimation = _spriteAnimation('Idle', 12);
+    idleAnimation = _spriteAnimation('Idle', 11);
     runningAnimation = _spriteAnimation('Run', 6);
-    jumpingAnimation = _spriteAnimation('Jump', 1);
-    fallingAnimation = _spriteAnimation('Fall', 1);
-    hitAnimation = _spriteAnimation('Hit', 2)..loop = false;
+    hitAnimation = _spriteAnimation('Hit', 5)..loop = false;
     appearingAnimation = _specialSpriteAnimation('Appearing', 7);
     disappearingAnimation = _specialSpriteAnimation('Desappearing', 7);
 
     // List of all Animations
     animations = {
-      KingPigState.idle: idleAnimation,
-      KingPigState.running: runningAnimation,
-      KingPigState.jumping: jumpingAnimation,
-      KingPigState.falling: fallingAnimation,
-      KingPigState.hit: hitAnimation,
-      KingPigState.appearing: appearingAnimation,
-      KingPigState.disappearing: disappearingAnimation,
+      RinoState.idle: idleAnimation,
+      RinoState.running: runningAnimation,
+      RinoState.hit: hitAnimation,
+      RinoState.appearing: appearingAnimation,
+      RinoState.disappearing: disappearingAnimation,
     };
 
     // Set Current Animation
-    current = KingPigState.idle;
+    current = RinoState.idle;
   }
 
   SpriteAnimation _spriteAnimation(String state, int amount) {
     return SpriteAnimation.fromFrameData(
-      game.images.fromCache('Enemies/King Pig/$state (38x28).png'),
+      game.images.fromCache('Enemies/Rino/$state (52x34).png'),
       SpriteAnimationData.sequenced(
         amount: amount,
         stepTime: _stepTime,
-        textureSize: Vector2(38, 28),
+        textureSize: Vector2(52, 34),
       ),
     );
   }
@@ -207,16 +194,10 @@ class KingPig extends SpriteAnimationGroupComponent
   }
 
   void _updatePlayerState() {
-    KingPigState playerState = KingPigState.idle;
+    RinoState playerState = RinoState.idle;
 
     // Check if moving, set running
-    if (velocity.x > 0 || velocity.x < 0) playerState = KingPigState.running;
-
-    // check if Falling set to falling
-    if (velocity.y > 0) playerState = KingPigState.falling;
-
-    // Checks if jumping, set to jumping
-    if (velocity.y < 0) playerState = KingPigState.jumping;
+    if (velocity.x > 0 || velocity.x < 0) playerState = RinoState.running;
 
     current = playerState;
   }

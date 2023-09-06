@@ -1,4 +1,4 @@
-import 'package:mini_game_adventure/game/components/king_pig.dart';
+import 'package:mini_game_adventure/game/components/rino.dart';
 import 'package:mini_game_adventure/game/manager/game_manager.dart';
 import 'package:mini_game_adventure/game/widgets/background_tile.dart';
 import 'package:mini_game_adventure/game/widgets/collision.dart';
@@ -17,7 +17,7 @@ class Level extends World {
   GameManager gameManager = GameManager();
 
   Pig pig = Pig(position: Vector2(0, 0));
-  KingPig kingPig = KingPig(position: Vector2(0, 0));
+  Rino rino = Rino(position: Vector2(0, 0));
 
   @override
   FutureOr<void> onLoad() async {
@@ -60,9 +60,9 @@ class Level extends World {
             if (spawnPoint.name == 'Pig') {
               pig.position = Vector2(spawnPoint.x, spawnPoint.y);
               add(pig);
-            } else if (spawnPoint.name == 'King Pig') {
-              kingPig.position = Vector2(spawnPoint.x, spawnPoint.y);
-              add(kingPig);
+            } else if (spawnPoint.name == 'Rino') {
+              rino.position = Vector2(spawnPoint.x, spawnPoint.y);
+              add(rino);
             }
             break;
 
@@ -151,6 +151,6 @@ class Level extends World {
     }
     player.collisionBlocks = collisionBlocks;
     pig.collisionBlocks = collisionBlocks;
-    kingPig.collisionBlocks = collisionBlocks;
+    rino.collisionBlocks = collisionBlocks;
   }
 }
