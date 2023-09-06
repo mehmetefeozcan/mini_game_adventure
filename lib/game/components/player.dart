@@ -99,7 +99,7 @@ class Player extends SpriteAnimationGroupComponent
       Set<Vector2> intersectionPoints, PositionComponent other) {
     if (!reachedCheckpoint) {
       if (other is Fruit) other.collidedWithPlayer();
-      if (other is Saw) _respawn();
+      if (other is Saw || other is Enemy) _respawn();
       if (other is Checkpoint) _reachedCheckpoint();
       if (other is Fan) _fanJump(_dt, other.jumpSpeed);
       if (other is Trampoline) _fanJump(_dt, other.jumpSpeed);

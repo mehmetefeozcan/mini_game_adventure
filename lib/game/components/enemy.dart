@@ -169,13 +169,13 @@ class Enemy extends SpriteAnimationGroupComponent
         if (checkCollision(this, block)) {
           if (velocity.x > 0) {
             _delayAndFlip(-1);
-            position.x = block.x - hitbox.offsetX - hitbox.width;
+            position.x -= 6;
 
             break;
           }
           if (velocity.x < 0) {
             _delayAndFlip(1);
-            position.x = block.x + block.width + hitbox.width + hitbox.offsetX;
+            position.x += 6;
 
             break;
           }
@@ -236,7 +236,7 @@ class Enemy extends SpriteAnimationGroupComponent
   Future _delayAndFlip(double movement) async {
     velocity.x = 0;
     horizontalMovement = 0;
-    await Future.delayed(const Duration(milliseconds: 500));
+    await Future.delayed(const Duration(milliseconds: 1000));
 
     flipHorizontallyAroundCenter();
 
