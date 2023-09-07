@@ -17,15 +17,14 @@ class Spike extends SpriteAnimationComponent
 
   final double stepTime = 0.05;
   final hitbox = CustomHitbox(
-    offsetX: 10,
-    offsetY: 10,
-    width: 12,
-    height: 12,
+    offsetX: 0,
+    offsetY: 6,
+    width: 16,
+    height: 10,
   );
 
   @override
   FutureOr<void> onLoad() {
-    // debugMode = true;
     priority = -1;
 
     add(

@@ -1,3 +1,4 @@
+import 'package:mini_game_adventure/game/components/traps/spike.dart';
 import 'package:mini_game_adventure/game/widgets/background_tile.dart';
 import 'package:mini_game_adventure/game/manager/game_manager.dart';
 import 'package:mini_game_adventure/game/widgets/collision.dart';
@@ -107,6 +108,13 @@ class Level extends World {
                 size: Vector2(spawnPoint.width, spawnPoint.height),
               );
               add(trampoline);
+              break;
+            } else if (spawnPoint.name == 'Spike') {
+              final spike = Spike(
+                position: Vector2(spawnPoint.x, spawnPoint.y),
+                size: Vector2(spawnPoint.width, spawnPoint.height),
+              );
+              add(spike);
               break;
             }
           case 'Checkpoint':
