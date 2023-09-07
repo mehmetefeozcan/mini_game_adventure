@@ -6,7 +6,7 @@ import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'dart:async';
 
-enum RinoState { idle, running, hit, appearing, disappearing }
+enum RinoState { idle, running, hit, hitWall, appearing, disappearing }
 
 class Rino extends SpriteAnimationGroupComponent
     with HasGameRef<MyGame>, CollisionCallbacks {
@@ -65,6 +65,7 @@ class Rino extends SpriteAnimationGroupComponent
   @override
   void update(double dt) {
     accumulatedTime += dt;
+    moveSpeed += 0.5;
 
     while (accumulatedTime >= fixedDeltaTime) {
       if (!gotHit) {
@@ -205,6 +206,8 @@ class Rino extends SpriteAnimationGroupComponent
   Future _delayAndFlip(double movement) async {
     velocity.x = 0;
     horizontalMovement = 0;
+    moveSpeed = 30;
+
     await Future.delayed(const Duration(milliseconds: 1000));
 
     flipHorizontallyAroundCenter();

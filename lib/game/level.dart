@@ -1,6 +1,5 @@
-import 'package:mini_game_adventure/game/components/rino.dart';
-import 'package:mini_game_adventure/game/manager/game_manager.dart';
 import 'package:mini_game_adventure/game/widgets/background_tile.dart';
+import 'package:mini_game_adventure/game/manager/game_manager.dart';
 import 'package:mini_game_adventure/game/widgets/collision.dart';
 import 'package:mini_game_adventure/game/components/index.dart';
 import 'package:flame_tiled/flame_tiled.dart';

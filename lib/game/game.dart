@@ -19,7 +19,7 @@ class MyGame extends FlameGame
   @override
   Color backgroundColor() => const Color(0xFF211F30);
   late CameraComponent cam;
-  Player player = Player(character: 'Mask Dude');
+  Player player = Player(character: 'Pink Man');
   late JoystickComponent joystick;
 
   List<String> levelNames = [];
@@ -143,7 +143,7 @@ class MyGame extends FlameGame
       cam.viewfinder.anchor = Anchor.topCenter;
 
       await addAll([world, cam]);
-      
+
       maxWidth = world.level.size.x;
 
       isInited = true;
