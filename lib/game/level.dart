@@ -74,42 +74,41 @@ class Level extends World {
             add(fruit);
             break;
 
-          case 'Saw':
-            final isVertical = spawnPoint.properties.getValue('isVertical');
-            final offNeg = spawnPoint.properties.getValue('offNeg');
-            final offPos = spawnPoint.properties.getValue('offPos');
-            final saw = Saw(
-              isVertical: isVertical,
-              offNeg: offNeg,
-              offPos: offPos,
-              position: Vector2(spawnPoint.x, spawnPoint.y),
-              size: Vector2(spawnPoint.width, spawnPoint.height),
-            );
-            add(saw);
-            break;
-
-          case 'Fan':
-            final jumpSpeed = spawnPoint.properties.getValue('jumpSpeed');
-            final fanSpeed = spawnPoint.properties.getValue('fanSpeed');
-            final fan = Fan(
-              jumpSpeed: jumpSpeed,
-              fanSpeed: fanSpeed,
-              position: Vector2(spawnPoint.x, spawnPoint.y),
-              size: Vector2(spawnPoint.width, spawnPoint.height),
-            );
-            add(fan);
-            break;
-
-          case 'Trampoline':
-            final jumpSpeed = spawnPoint.properties.getValue('jumpSpeed');
-            final trampoline = Trampoline(
-              jumpSpeed: jumpSpeed,
-              position: Vector2(spawnPoint.x, spawnPoint.y),
-              size: Vector2(spawnPoint.width, spawnPoint.height),
-            );
-            add(trampoline);
-            break;
-
+          case 'Trap':
+            if (spawnPoint.name == 'Saw') {
+              final isVertical = spawnPoint.properties.getValue('isVertical');
+              final offNeg = spawnPoint.properties.getValue('offNeg');
+              final offPos = spawnPoint.properties.getValue('offPos');
+              final saw = Saw(
+                isVertical: isVertical,
+                offNeg: offNeg,
+                offPos: offPos,
+                position: Vector2(spawnPoint.x, spawnPoint.y),
+                size: Vector2(spawnPoint.width, spawnPoint.height),
+              );
+              add(saw);
+              break;
+            } else if (spawnPoint.name == 'Fan') {
+              final jumpSpeed = spawnPoint.properties.getValue('jumpSpeed');
+              final fanSpeed = spawnPoint.properties.getValue('fanSpeed');
+              final fan = Fan(
+                jumpSpeed: jumpSpeed,
+                fanSpeed: fanSpeed,
+                position: Vector2(spawnPoint.x, spawnPoint.y),
+                size: Vector2(spawnPoint.width, spawnPoint.height),
+              );
+              add(fan);
+              break;
+            } else if (spawnPoint.name == 'Trampoline') {
+              final jumpSpeed = spawnPoint.properties.getValue('jumpSpeed');
+              final trampoline = Trampoline(
+                jumpSpeed: jumpSpeed,
+                position: Vector2(spawnPoint.x, spawnPoint.y),
+                size: Vector2(spawnPoint.width, spawnPoint.height),
+              );
+              add(trampoline);
+              break;
+            }
           case 'Checkpoint':
             final checkpoint = Checkpoint(
               position: Vector2(spawnPoint.x, spawnPoint.y),

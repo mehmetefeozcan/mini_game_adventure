@@ -37,7 +37,7 @@
   <object id="131" name="Apple" type="Fruit" x="512" y="240" width="32" height="32"/>
   <object id="132" name="Apple" type="Fruit" x="208" y="223" width="32" height="32"/>
   <object id="168" name="Apple" type="Fruit" x="576" y="208" width="32" height="32"/>
-  <object id="169" name="Saw" type="Saw" x="352" y="304" width="32" height="32">
+  <object id="169" name="Saw" type="Trap" x="352" y="304" width="32" height="32">
    <properties>
     <property name="isVertical" type="bool" value="false"/>
     <property name="offNeg" type="float" value="5"/>

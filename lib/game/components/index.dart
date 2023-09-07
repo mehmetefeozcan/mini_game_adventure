@@ -1,8 +1,8 @@
 export 'checkpoint.dart';
-export 'fan.dart';
+export 'traps/fan.dart';
 export 'fruit.dart';
-export 'rino.dart';
-export 'pig.dart';
+export 'enemies/rino.dart';
+export 'enemies/pig.dart';
 export 'player.dart';
-export 'saw.dart';
-export 'trampoline.dart';
+export 'traps/saw.dart';
+export 'traps/trampoline.dart';

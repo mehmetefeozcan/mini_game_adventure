@@ -33,7 +33,7 @@
  </layer>
  <objectgroup id="2" name="SpawnPoints">
   <object id="36" name="Player" type="Player" x="56" y="283" width="32" height="32"/>
-  <object id="44" name="Trampoline" type="Trampoline" x="336" y="288" width="32" height="32">
+  <object id="44" name="Trampoline" type="Trap" x="336" y="288" width="32" height="32">
    <properties>
     <property name="jumpSpeed" type="float" value="800"/>
    </properties>
