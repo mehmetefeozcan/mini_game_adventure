@@ -103,6 +103,10 @@ class Player extends SpriteAnimationGroupComponent
       if (other is Fruit) other.collidedWithPlayer();
       if (other is Checkpoint) _reachedCheckpoint();
       if (other is Saw || other is Pig) _respawn();
+      if (other is BeeBullet) {
+        other.removeBullet();
+        _respawn();
+      }
     }
     super.onCollisionStart(intersectionPoints, other);
   }

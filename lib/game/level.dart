@@ -1,4 +1,3 @@
-import 'package:mini_game_adventure/game/components/traps/spike.dart';
 import 'package:mini_game_adventure/game/widgets/background_tile.dart';
 import 'package:mini_game_adventure/game/manager/game_manager.dart';
 import 'package:mini_game_adventure/game/widgets/collision.dart';
@@ -18,6 +17,7 @@ class Level extends World {
 
   Pig pig = Pig(position: Vector2(0, 0));
   Rino rino = Rino(position: Vector2(0, 0));
+  Bee bee = Bee(position: Vector2(0, 0));
 
   @override
   FutureOr<void> onLoad() async {
@@ -63,6 +63,9 @@ class Level extends World {
             } else if (spawnPoint.name == 'Rino') {
               rino.position = Vector2(spawnPoint.x, spawnPoint.y);
               add(rino);
+            } else if (spawnPoint.name == 'Bee') {
+              bee.position = Vector2(spawnPoint.x, spawnPoint.y);
+              add(bee);
             }
             break;
 

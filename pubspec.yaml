@@ -34,6 +34,7 @@ flutter:
     - assets/images/Traps/Saw/
     - assets/images/Traps/Fan/
     - assets/images/Background/
+    - assets/images/Enemies/Bee/
     - assets/images/Traps/Spikes/
     - assets/images/Items/Fruits/
     - assets/images/Enemies/Rino/

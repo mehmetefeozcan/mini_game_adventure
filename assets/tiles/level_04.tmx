@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="100" height="23" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="19">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="100" height="23" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="20">
  <tileset firstgid="1" source="MyAdventureGameTile.tsx"/>
  <layer id="1" name="Background" width="100" height="23">
   <properties>
@@ -55,6 +55,7 @@
    </properties>
   </object>
   <object id="17" name="Rino" type="Enemy" x="688" y="272" width="32" height="32"/>
-  <object id="18" name="Spike" type="Trap" x="64" y="288" width="32" height="32"/>
+  <object id="18" name="Spike" type="Trap" x="576" y="288" width="32" height="32"/>
+  <object id="19" name="Bee" type="Enemy" x="64" y="160" width="32" height="32"/>
  </objectgroup>
 </map>

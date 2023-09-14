@@ -31,6 +31,8 @@ class MyGame extends FlameGame
   bool isInited = false;
   double maxWidth = 780;
 
+  bool isBeeBulletHit = false;
+
   @override
   FutureOr<void> onLoad() async {
     // Load all images into cache

@@ -6,3 +6,5 @@ export 'enemies/pig.dart';
 export 'player.dart';
 export 'traps/saw.dart';
 export 'traps/trampoline.dart';
+export 'enemies/bee.dart';
+export 'traps/spike.dart';
