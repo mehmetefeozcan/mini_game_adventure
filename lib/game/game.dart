@@ -19,11 +19,13 @@ class MyGame extends FlameGame
   @override
   Color backgroundColor() => const Color(0xFF211F30);
   late CameraComponent cam;
-  Player player = Player(character: 'Pink Man');
+  Player player = Player(character: 'Ninja Frog');
   late JoystickComponent joystick;
 
   List<String> levelNames = [];
   int currentLevelIndex = 0;
+
+  double centerDiff = 0;
 
   GameManager gameManager = GameManager();
   HiveController hiveController = HiveController();
@@ -54,13 +56,11 @@ class MyGame extends FlameGame
       if (isInited) {
         cam.viewport.position = Vector2(-size.x / 2, 0);
 
-        if (maxWidth == 1600) {
-          if (maxWidth * 0.4 < player.position.x) {
-            cam.viewport.position += Vector2(-size.x * 0.8, 0);
-          }
-          if (maxWidth * 0.8 < player.position.x) {
-            cam.viewport.position += Vector2(-size.x * 0.24, 0);
-          }
+        final screenMid = cam.viewport.size.x / 2;
+
+        if (screenMid < player.position.x) {
+          centerDiff = player.position.x - screenMid;
+          cam.viewport.position.x -= centerDiff;
         }
       }
     }
