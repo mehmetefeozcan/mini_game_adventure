@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flame/components.dart';
 import 'package:flame/parallax.dart';
 import 'package:flutter/material.dart';
+import 'package:mini_game_adventure/game/game.dart';
 
 class BackgroundTile extends ParallaxComponent {
   final String color;
@@ -26,5 +27,13 @@ class BackgroundTile extends ParallaxComponent {
       fill: LayerFill.none,
     );
     return super.onLoad();
+  }
+
+  @override
+  void update(double dt) {
+    position = -(gameRef as MyGame).cam.viewport.position;
+    position =
+        Vector2(-(gameRef as MyGame).cam.viewport.position.x + -size.x / 2, 0);
+    super.update(dt);
   }
 }
