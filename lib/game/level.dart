@@ -65,6 +65,9 @@ class Level extends World {
               add(rino);
             } else if (spawnPoint.name == 'Bee') {
               bee.position = Vector2(spawnPoint.x, spawnPoint.y);
+
+              bee.bulletPos = Vector2(spawnPoint.x + bee.hitbox.width / 2,
+                  spawnPoint.y + bee.hitbox.height);
               add(bee);
             }
             break;

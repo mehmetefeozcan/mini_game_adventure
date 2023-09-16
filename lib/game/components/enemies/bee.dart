@@ -10,9 +10,7 @@ enum BeeState { idle, hit, attack, appearing, disappearing }
 
 class Bee extends SpriteAnimationGroupComponent
     with HasGameRef<MyGame>, CollisionCallbacks {
-  Bee({
-    position,
-  }) : super(position: position);
+  Bee({position}) : super(position: position);
 
   late final SpriteAnimation hitAnimation;
   late final SpriteAnimation idleAnimation;
@@ -36,6 +34,7 @@ class Bee extends SpriteAnimationGroupComponent
   double accumulatedTime = 0;
 
   late BeeBullet bullet;
+  Vector2 bulletPos = Vector2(0, 0);
 
   int bulletCount = 0;
 
@@ -60,6 +59,7 @@ class Bee extends SpriteAnimationGroupComponent
       ),
     );
     //debugMode = true;
+
     return super.onLoad();
   }
 
@@ -145,13 +145,11 @@ class Bee extends SpriteAnimationGroupComponent
           if (velocity.x > 0) {
             _delayAndFlip(-1);
             position.x -= 6;
-
             break;
           }
           if (velocity.x < 0) {
             _delayAndFlip(1);
             position.x += 6;
-
             break;
           }
         }
@@ -188,31 +186,21 @@ class Bee extends SpriteAnimationGroupComponent
   }
 
   Future _updatePlayerState() async {
-    bullet = BeeBullet(
-        position:
-            Vector2(position.x + hitbox.width / 2, position.y + hitbox.height));
+    bullet = BeeBullet(position: bulletPos);
 
     if (bulletCount == 0) {
-      await gameRef.add(bullet);
-      bulletCount = 1;
-      return;
+      if (gameRef.player.position.x - 200 <= position.x &&
+          gameRef.player.position.x + 200 >= position.x) {
+        await gameRef.add(bullet);
+        bulletCount = 1;
+      }
     } else if (bulletCount == 1) {
       if (gameRef.isBeeBulletHit) {
         bulletCount = 0;
-        // gameRef.removeAll([bullet]);
       }
     }
 
     current = BeeState.idle;
-  }
-
-  bool findBeeBullet() {
-    bool isFind = false;
-    var compList = game.children.toList()[0].children.toList();
-    for (var child in compList) {
-      isFind = child.runtimeType == BeeBullet;
-    }
-    return isFind;
   }
 
   Future _delayAndFlip(double movement) async {
@@ -240,7 +228,6 @@ class BeeBullet extends SpriteComponent
   double moveSpeed = 20;
   double horizontalMovement = 0;
   Vector2 velocity = Vector2.zero();
-  Vector2 startingPosition = Vector2.zero();
 
   double fixedDeltaTime = 1 / 60;
   double accumulatedTime = 0;
@@ -256,8 +243,6 @@ class BeeBullet extends SpriteComponent
   @override
   FutureOr<void> onLoad() {
     _load();
-
-    startingPosition = Vector2(position.x, position.y);
 
     add(
       RectangleHitbox(
