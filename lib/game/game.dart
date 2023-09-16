@@ -59,13 +59,11 @@ class MyGame extends FlameGame
         final screenMid = cam.viewport.size.x / 2;
         centerDiff = player.position.x - screenMid;
 
-        if (maxWidth == 1600) {
-          if (screenMid < player.position.x &&
-              player.position.x < 1600 - screenMid) {
-            cam.viewport.position.x -= centerDiff;
-          } else if (player.position.x > 1600 - screenMid) {
-            cam.viewport.position.x -= 1600 - screenMid * 2;
-          }
+        if (screenMid < player.position.x &&
+            player.position.x < maxWidth - screenMid) {
+          cam.viewport.position.x -= centerDiff;
+        } else if (player.position.x > maxWidth - screenMid) {
+          cam.viewport.position.x -= maxWidth - screenMid * 2;
         }
       }
     }
