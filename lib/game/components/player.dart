@@ -308,7 +308,7 @@ class Player extends SpriteAnimationGroupComponent
   }
 
   void jumpPlatform(PositionComponent other) {
-    if (checkFallPlatform(this, other)) {
+    if (y + hitbox.height < other.y) {
       velocity.y = 0;
       position.y = other.y - height;
       isOnGround = true;
