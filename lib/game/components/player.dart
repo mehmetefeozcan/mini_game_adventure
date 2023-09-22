@@ -102,6 +102,7 @@ class Player extends SpriteAnimationGroupComponent
       if (other is Fan) _fanJump(_dt, other.jumpSpeed);
       if (other is Fruit) other.collidedWithPlayer();
       if (other is Checkpoint) _reachedCheckpoint();
+      if (other is FallingPlatform) jumpPlatform(other);
       if (other is Saw || other is Pig) _respawn();
       if (other is BeeBullet) {
         other.removeBullet();
@@ -304,5 +305,14 @@ class Player extends SpriteAnimationGroupComponent
     current = PlayerState.disappearing;
 
     game.finishLevel();
+  }
+
+  void jumpPlatform(PositionComponent other) {
+    isOnGround = true;
+    if (checkFallPlatform(this, other)) {
+      velocity.y = 0;
+      position.y = other.y - height;
+      //isOnGround = true;
+    }
   }
 }

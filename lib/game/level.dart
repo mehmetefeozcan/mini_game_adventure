@@ -123,6 +123,18 @@ class Level extends World {
               add(spike);
               break;
             }
+            if (spawnPoint.name == 'Platform') {
+              final offNeg = spawnPoint.properties.getValue('offNeg');
+              final offPos = spawnPoint.properties.getValue('offPos');
+              final platform = FallingPlatform(
+                offNeg: offNeg,
+                offPos: offPos,
+                position: Vector2(spawnPoint.x, spawnPoint.y),
+                size: Vector2(spawnPoint.width, spawnPoint.height),
+              );
+              add(platform);
+              break;
+            }
           case 'Checkpoint':
             final checkpoint = Checkpoint(
               position: Vector2(spawnPoint.x, spawnPoint.y),
