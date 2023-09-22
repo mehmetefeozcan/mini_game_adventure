@@ -32,8 +32,9 @@ class BackgroundTile extends ParallaxComponent {
   @override
   void update(double dt) {
     position = -(gameRef as MyGame).cam.viewport.position;
-    position =
-        Vector2(-(gameRef as MyGame).cam.viewport.position.x + -size.x / 2, 0);
+    position = Vector2(
+        -(gameRef as MyGame).cam.viewport.position.x + -size.x / 2,
+        -(gameRef as MyGame).cam.viewport.position.y);
     super.update(dt);
   }
 }
