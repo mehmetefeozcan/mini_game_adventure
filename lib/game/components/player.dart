@@ -308,11 +308,12 @@ class Player extends SpriteAnimationGroupComponent
   }
 
   void jumpPlatform(PositionComponent other) {
-    isOnGround = true;
     if (checkFallPlatform(this, other)) {
       velocity.y = 0;
       position.y = other.y - height;
       //isOnGround = true;
     }
+    isOnGround = true;
+    current = PlayerState.idle;
   }
 }

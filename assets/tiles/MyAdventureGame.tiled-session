@@ -35,8 +35,8 @@
         },
         "level_03.tmx": {
             "expandedObjectLayers": [
-                3,
-                2
+                2,
+                3
             ],
             "scale": 0.8376,
             "selectedLayer": 1,
@@ -47,8 +47,8 @@
         },
         "level_04.tmx": {
             "expandedObjectLayers": [
-                3,
-                2
+                2,
+                3
             ],
             "scale": 2.6691,
             "selectedLayer": 2,

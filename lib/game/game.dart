@@ -25,13 +25,15 @@ class MyGame extends FlameGame
   List<String> levelNames = [];
   int currentLevelIndex = 0;
 
-  double centerDiff = 0;
+  double centerDiffX = 0;
+  double centerDiffY = 0;
 
   GameManager gameManager = GameManager();
   HiveController hiveController = HiveController();
 
   bool isInited = false;
   double maxWidth = 780;
+  double maxHeight = 360;
 
   bool isBeeBulletHit = false;
 
@@ -56,14 +58,23 @@ class MyGame extends FlameGame
       if (isInited) {
         cam.viewport.position = Vector2(-size.x / 2, 0);
 
-        final screenMid = cam.viewport.size.x / 2;
-        centerDiff = player.position.x - screenMid;
+        final screenMidX = cam.viewport.size.x / 2;
+        centerDiffX = player.position.x - screenMidX;
 
-        if (screenMid < player.position.x &&
-            player.position.x < maxWidth - screenMid) {
-          cam.viewport.position.x -= centerDiff;
-        } else if (player.position.x > maxWidth - screenMid) {
-          cam.viewport.position.x -= maxWidth - screenMid * 2;
+        final screenMidY = cam.viewport.size.y / 1.2;
+        centerDiffY = player.position.y - screenMidY;
+
+        // Yatay Kamera Hareketi
+        if (screenMidX < player.position.x &&
+            player.position.x < maxWidth - screenMidX) {
+          cam.viewport.position.x -= centerDiffX;
+        } else if (player.position.x > maxWidth - screenMidX) {
+          cam.viewport.position.x -= maxWidth - screenMidX * 2;
+        }
+
+        // Dikey Kamera Hareketi
+        if (screenMidY < player.position.y) {
+          cam.viewport.position.y -= centerDiffY;
         }
       }
     }
