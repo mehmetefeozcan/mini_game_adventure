@@ -263,10 +263,10 @@ class Player extends SpriteAnimationGroupComponent
     if (velocity.x > 0 || velocity.x < 0) playerState = PlayerState.running;
 
     // check if Falling set to falling
-    if (velocity.y > 0) playerState = PlayerState.falling;
+    if (velocity.y > 0 && !isOnGround) playerState = PlayerState.falling;
 
     // Checks if jumping, set to jumping
-    if (velocity.y < 0) playerState = PlayerState.jumping;
+    if (velocity.y < 0 && !isOnGround) playerState = PlayerState.jumping;
 
     current = playerState;
   }
@@ -311,9 +311,7 @@ class Player extends SpriteAnimationGroupComponent
     if (checkFallPlatform(this, other)) {
       velocity.y = 0;
       position.y = other.y - height;
-      //isOnGround = true;
+      isOnGround = true;
     }
-    isOnGround = true;
-    current = PlayerState.idle;
   }
 }
