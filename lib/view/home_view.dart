@@ -37,25 +37,27 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return Material(
       child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            _menuButton(context, "Oyna", () {
-              widget.game.play();
-              setState(() {});
-            }),
-            SizedBox(height: context.highValue),
-            _menuButton(context, "Bölümler", () {
-              widget.game.goEpisodes();
-              setState(() {});
-            }),
-            /*  SizedBox(height: context.highValue),
+        child: widget.game.isLoading
+            ? const CircularProgressIndicator()
+            : Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  _menuButton(context, "Oyna", () {
+                    widget.game.play();
+                    setState(() {});
+                  }),
+                  SizedBox(height: context.highValue),
+                  _menuButton(context, "Bölümler", () {
+                    widget.game.goEpisodes();
+                    setState(() {});
+                  }),
+                  /*  SizedBox(height: context.highValue),
             _menuButton(context, "Ayarlar", () {
               widget.game.goSettings();
               setState(() {});
             }), */
-          ],
-        ),
+                ],
+              ),
       ),
     );
   }

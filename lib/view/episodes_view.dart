@@ -36,32 +36,34 @@ class _EpisodesViewState extends State<EpisodesView> {
       color: Colors.white,
       child: isLoading
           ? const Center(child: CircularProgressIndicator())
-          : SizedBox(
-              width: context.width,
-              height: context.height,
-              child: Stack(
-                children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+          : widget.game.isLoading
+              ? const Center(child: CircularProgressIndicator())
+              : SizedBox(
+                  width: context.width,
+                  height: context.height,
+                  child: Stack(
                     children: [
-                      SizedBox(height: context.highValue),
-                      Row(
+                      Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text("Bölümler",
-                              style: context.textTheme.headlineSmall),
+                          SizedBox(height: context.highValue),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text("Bölümler",
+                                  style: context.textTheme.headlineSmall),
+                            ],
+                          ),
+                          SizedBox(height: context.highValue),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: _episodes(),
+                          )
                         ],
                       ),
-                      SizedBox(height: context.highValue),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: _episodes(),
-                      )
                     ],
                   ),
-                ],
-              ),
-            ),
+                ),
     );
   }
 

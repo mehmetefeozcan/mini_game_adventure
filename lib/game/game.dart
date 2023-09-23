@@ -18,9 +18,14 @@ class MyGame extends FlameGame
         TapCallbacks {
   @override
   Color backgroundColor() => const Color(0xFF211F30);
-  late CameraComponent cam;
+
   Player player = Player(character: 'Ninja Frog');
+
   late JoystickComponent joystick;
+  late CameraComponent cam;
+
+  @override
+  bool isLoading = false;
 
   List<String> levelNames = [];
   int currentLevelIndex = 0;
@@ -140,6 +145,7 @@ class MyGame extends FlameGame
   }
 
   Future _loadLevel() async {
+    isLoading = true;
     gameManager.health.value = 2;
     player.size = Vector2(34, 34);
 
@@ -149,20 +155,16 @@ class MyGame extends FlameGame
         levelName: levelNames[currentLevelIndex],
       );
 
-      /* cam = CameraComponent.withFixedResolution(
-        world: world,
-        width: size.x,
-        height: size.y,
-      ); */
-
       cam = CameraComponent(world: world);
       cam.viewfinder.anchor = Anchor.topCenter;
 
       await addAll([world, cam]);
 
       maxWidth = world.level.size.x;
+      maxHeight = world.level.size.y;
 
       isInited = true;
+      isLoading = false;
     });
   }
 
