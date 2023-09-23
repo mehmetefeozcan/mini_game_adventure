@@ -50,8 +50,10 @@ class _EpisodesViewState extends State<EpisodesView> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text("Bölümler",
-                                  style: context.textTheme.headlineSmall),
+                              Text(
+                                "Bölümler",
+                                style: context.textTheme.headlineSmall,
+                              ),
                             ],
                           ),
                           SizedBox(height: context.highValue),

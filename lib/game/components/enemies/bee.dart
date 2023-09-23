@@ -38,7 +38,6 @@ class Bee extends SpriteAnimationGroupComponent
 
   int bulletCount = 0;
 
-  List<CollisionBlock> collisionBlocks = [];
   CustomHitbox hitbox = CustomHitbox(
     offsetX: 11,
     offsetY: 8,
@@ -139,7 +138,7 @@ class Bee extends SpriteAnimationGroupComponent
   }
 
   void _checkHorizontalCollisions() {
-    for (final block in collisionBlocks) {
+    for (final block in gameRef.collisionBlocks) {
       if (!block.isPlatform) {
         if (checkCollision(this, block)) {
           if (velocity.x > 0) {
@@ -158,7 +157,7 @@ class Bee extends SpriteAnimationGroupComponent
   }
 
   void _checkVerticalCollisions() {
-    for (final block in collisionBlocks) {
+    for (final block in gameRef.collisionBlocks) {
       if (block.isPlatform) {
         if (checkCollision(this, block)) {
           if (velocity.y > 0) {
@@ -256,7 +255,7 @@ class BeeBullet extends SpriteComponent
 
   @override
   void update(double dt) {
-    collisionBlocks = gameRef.player.collisionBlocks;
+    collisionBlocks = gameRef.collisionBlocks;
 
     accumulatedTime += dt;
 

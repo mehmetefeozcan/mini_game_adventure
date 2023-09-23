@@ -15,33 +15,35 @@ class _GameOverViewState extends State<GameOverView> {
   Widget build(BuildContext context) {
     return Material(
       child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              "Oyunu Kaybettiniz!",
-              style: context.textTheme.headlineSmall,
-            ),
-            SizedBox(height: context.highValue),
-            _menuButton(
-              context,
-              "Tekrar Oyna",
-              () {
-                widget.game.restart();
-                setState(() {});
-              },
-            ),
-            SizedBox(height: context.highValue),
-            _menuButton(
-              context,
-              "Çık",
-              () {
-                widget.game.quit();
-                setState(() {});
-              },
-            ),
-          ],
-        ),
+        child: widget.game.isLoading
+            ? const CircularProgressIndicator()
+            : Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Oyunu Kaybettiniz!",
+                    style: context.textTheme.headlineSmall,
+                  ),
+                  SizedBox(height: context.highValue),
+                  _menuButton(
+                    context,
+                    "Tekrar Oyna",
+                    () {
+                      widget.game.restart();
+                      setState(() {});
+                    },
+                  ),
+                  SizedBox(height: context.highValue),
+                  _menuButton(
+                    context,
+                    "Çık",
+                    () {
+                      widget.game.quit();
+                      setState(() {});
+                    },
+                  ),
+                ],
+              ),
       ),
     );
   }

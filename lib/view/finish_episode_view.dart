@@ -15,43 +15,45 @@ class _FinishEpisodeViewState extends State<FinishEpisodeView> {
   Widget build(BuildContext context) {
     return Material(
       child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              "Bölüm Geçildi!",
-              style: context.textTheme.headlineSmall,
-            ),
-            SizedBox(height: context.highValue),
-            _menuButton(
-              context,
-              "Sonraki Bölüm",
-              () {
-                widget.game.nextLevel();
+        child: widget.game.isLoading
+            ? const CircularProgressIndicator()
+            : Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Bölüm Geçildi!",
+                    style: context.textTheme.headlineSmall,
+                  ),
+                  SizedBox(height: context.highValue),
+                  _menuButton(
+                    context,
+                    "Sonraki Bölüm",
+                    () {
+                      widget.game.nextLevel();
 
-                setState(() {});
-              },
-            ),
-            SizedBox(height: context.highValue),
-            _menuButton(
-              context,
-              "Tekrar Oyna",
-              () {
-                widget.game.restart();
-                setState(() {});
-              },
-            ),
-            SizedBox(height: context.highValue),
-            _menuButton(
-              context,
-              "Çık",
-              () {
-                widget.game.quit();
-                setState(() {});
-              },
-            ),
-          ],
-        ),
+                      setState(() {});
+                    },
+                  ),
+                  SizedBox(height: context.highValue),
+                  _menuButton(
+                    context,
+                    "Tekrar Oyna",
+                    () {
+                      widget.game.restart();
+                      setState(() {});
+                    },
+                  ),
+                  SizedBox(height: context.highValue),
+                  _menuButton(
+                    context,
+                    "Çık",
+                    () {
+                      widget.game.quit();
+                      setState(() {});
+                    },
+                  ),
+                ],
+              ),
       ),
     );
   }

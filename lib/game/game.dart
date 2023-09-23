@@ -1,5 +1,6 @@
 import 'package:mini_game_adventure/game/core/helpers/hive_controller.dart';
 import 'package:mini_game_adventure/game/manager/game_manager.dart';
+import 'package:mini_game_adventure/game/widgets/collision.dart';
 import 'package:mini_game_adventure/game/widgets/jump_button.dart';
 import 'package:mini_game_adventure/game/components/player.dart';
 import 'package:mini_game_adventure/game/level.dart';
@@ -35,6 +36,7 @@ class MyGame extends FlameGame
 
   GameManager gameManager = GameManager();
   HiveController hiveController = HiveController();
+  List<CollisionBlock> collisionBlocks = [];
 
   bool isInited = false;
   double maxWidth = 780;

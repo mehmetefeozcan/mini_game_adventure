@@ -14,11 +14,14 @@
             "scaleInEditor": 1
         },
         "level_01.tmx": {
+            "expandedObjectLayers": [
+                2
+            ],
             "scale": 0.9332,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 391.66309472781825,
-                "y": 184.31204457779683
+                "x": 493.9991427346765,
+                "y": 183.24046292327478
             }
         },
         "level_02.tmx": {
@@ -26,11 +29,11 @@
                 8,
                 7
             ],
-            "scale": 0.6963,
+            "scale": 2.1069,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 391.3543013069079,
-                "y": 185.2649719948298
+                "x": 935.260335089468,
+                "y": 246.33347572262565
             }
         },
         "level_03.tmx": {
@@ -41,8 +44,8 @@
             "scale": 0.8376,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 390.99808978032473,
-                "y": 185.0525310410697
+                "x": 474.5702005730658,
+                "y": 183.85864374403053
             }
         },
         "level_04.tmx": {
@@ -50,11 +53,11 @@
                 3,
                 2
             ],
-            "scale": 0.5816,
-            "selectedLayer": 1,
+            "scale": 0.8748,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 798.658872077029,
-                "y": 311.21045392022006
+                "x": 620.1417466849566,
+                "y": 400.0914494741656
             }
         }
     },
@@ -71,7 +74,7 @@
         "level_02.tmx"
     ],
     "project": "MyAdventureGame.tiled-project",
-    "property.type": "float",
+    "property.type": "bool",
     "recentFiles": [
         "level_02.tmx",
         "level_01.tmx",

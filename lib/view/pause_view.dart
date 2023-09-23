@@ -20,18 +20,20 @@ class _PauseViewState extends State<PauseView> {
         width: context.width,
         height: context.height,
         child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              _menuButton(
-                context,
-                "Devam Et",
-                () {
-                  widget.game.resume();
-                  setState(() {});
-                },
-              ),
-              /* SizedBox(height: context.highValue),
+          child: widget.game.isLoading
+              ? const CircularProgressIndicator()
+              : Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    _menuButton(
+                      context,
+                      "Devam Et",
+                      () {
+                        widget.game.resume();
+                        setState(() {});
+                      },
+                    ),
+                    /* SizedBox(height: context.highValue),
               _menuButton(
                 context,
                 "Ayarlar",
@@ -40,17 +42,17 @@ class _PauseViewState extends State<PauseView> {
                   setState(() {});
                 },
               ), */
-              SizedBox(height: context.highValue),
-              _menuButton(
-                context,
-                "Çık",
-                () {
-                  widget.game.quit();
-                  setState(() {});
-                },
-              ),
-            ],
-          ),
+                    SizedBox(height: context.highValue),
+                    _menuButton(
+                      context,
+                      "Çık",
+                      () {
+                        widget.game.quit();
+                        setState(() {});
+                      },
+                    ),
+                  ],
+                ),
         ),
       ),
     );

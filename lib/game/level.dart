@@ -1,3 +1,4 @@
+import 'package:mini_game_adventure/game/game.dart';
 import 'package:mini_game_adventure/game/widgets/background_tile.dart';
 import 'package:mini_game_adventure/game/manager/game_manager.dart';
 import 'package:mini_game_adventure/game/widgets/collision.dart';
@@ -6,18 +7,14 @@ import 'package:flame_tiled/flame_tiled.dart';
 import 'package:flame/components.dart';
 import 'dart:async';
 
-class Level extends World {
+class Level extends World with HasGameRef<MyGame> {
   late TiledComponent level;
   late String levelName;
   late Player player;
 
   Level({required this.player, required this.levelName});
-  List<CollisionBlock> collisionBlocks = [];
-  GameManager gameManager = GameManager();
 
-  Pig pig = Pig(position: Vector2(0, 0));
-  Rino rino = Rino(position: Vector2(0, 0));
-  Bee bee = Bee(position: Vector2(0, 0));
+  GameManager gameManager = GameManager();
 
   @override
   FutureOr<void> onLoad() async {
@@ -58,13 +55,13 @@ class Level extends World {
 
           case 'Enemy':
             if (spawnPoint.name == 'Pig') {
-              pig.position = Vector2(spawnPoint.x, spawnPoint.y);
+              Pig pig = Pig(position: Vector2(spawnPoint.x, spawnPoint.y));
               add(pig);
             } else if (spawnPoint.name == 'Rino') {
-              rino.position = Vector2(spawnPoint.x, spawnPoint.y);
+              Rino rino = Rino(position: Vector2(spawnPoint.x, spawnPoint.y));
               add(rino);
             } else if (spawnPoint.name == 'Bee') {
-              bee.position = Vector2(spawnPoint.x, spawnPoint.y);
+              Bee bee = Bee(position: Vector2(spawnPoint.x, spawnPoint.y));
 
               bee.bulletPos = Vector2(spawnPoint.x + bee.hitbox.width / 2 + 1,
                   spawnPoint.y + bee.hitbox.height);
@@ -160,7 +157,7 @@ class Level extends World {
               size: Vector2(collision.width, collision.height),
               isPlatform: true,
             );
-            collisionBlocks.add(platform);
+            gameRef.collisionBlocks.add(platform);
             add(platform);
             break;
           default:
@@ -168,13 +165,10 @@ class Level extends World {
               position: Vector2(collision.x, collision.y),
               size: Vector2(collision.width, collision.height),
             );
-            collisionBlocks.add(block);
+            gameRef.collisionBlocks.add(block);
             add(block);
         }
       }
     }
-    player.collisionBlocks = collisionBlocks;
-    pig.collisionBlocks = collisionBlocks;
-    rino.collisionBlocks = collisionBlocks;
   }
 }
