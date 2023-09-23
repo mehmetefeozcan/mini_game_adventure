@@ -10,7 +10,7 @@
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
         "MyAdventureGameTile.tsx": {
-            "scaleInDock": 2.1446,
+            "scaleInDock": 1.8247,
             "scaleInEditor": 1
         },
         "level_01.tmx": {
@@ -25,10 +25,6 @@
             }
         },
         "level_02.tmx": {
-            "expandedObjectLayers": [
-                3,
-                2
-            ],
             "scale": 0.5188,
             "selectedLayer": 0,
             "viewCenter": {
@@ -44,8 +40,8 @@
             "scale": 0.7273,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 1185.2055547916955,
-                "y": 280.48948164443834
+                "x": 1306.2010174618454,
+                "y": -34.37371098583799
             }
         },
         "level_04.tmx": {
@@ -53,11 +49,11 @@
                 3,
                 2
             ],
-            "scale": 1.2075,
+            "scale": 1.9354,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 1242.2360248447203,
-                "y": 291.51138716356104
+                "x": 1288.1058179187764,
+                "y": 233.5434535496538
             }
         },
         "level_05.tmx": {
@@ -84,19 +80,21 @@
     "map.tileWidth": 16,
     "map.width": 100,
     "openFiles": [
-        "level_04.tmx",
-        "level_03.tmx",
         "level_01.tmx",
-        "level_02.tmx"
+        "level_02.tmx",
+        "level_03.tmx",
+        "level_04.tmx",
+        "level_05.tmx"
     ],
     "project": "MyAdventureGame.tiled-project",
     "property.type": "string",
     "recentFiles": [
-        "level_06.tmx",
-        "level_02.tmx",
         "level_01.tmx",
-        "level_04.tmx",
+        "level_02.tmx",
         "level_03.tmx",
+        "level_05.tmx",
+        "level_04.tmx",
+        "level_06.tmx",
         "MyAdventureGameTile.tsx"
     ],
     "resizeMap.removeObjects": false,
