@@ -1,6 +1,5 @@
 import 'package:mini_game_adventure/game/core/helpers/custom_hitbox.dart';
 import 'package:mini_game_adventure/game/core/helpers/utils.dart';
-import 'package:mini_game_adventure/game/widgets/collision.dart';
 import 'package:mini_game_adventure/game/game.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
@@ -38,12 +37,11 @@ class Rino extends SpriteAnimationGroupComponent
   double fixedDeltaTime = 1 / 60;
   double accumulatedTime = 0;
 
-  List<CollisionBlock> collisionBlocks = [];
   CustomHitbox hitbox = CustomHitbox(
-    offsetX: 11,
-    offsetY: 8,
-    width: 18,
-    height: 24,
+    offsetX: 2,
+    offsetY: 2,
+    width: 48,
+    height: 30,
   );
 
   @override
@@ -140,7 +138,7 @@ class Rino extends SpriteAnimationGroupComponent
   }
 
   void _checkHorizontalCollisions() {
-    for (final block in collisionBlocks) {
+    for (final block in gameRef.collisionBlocks) {
       if (!block.isPlatform) {
         if (checkCollision(this, block)) {
           if (velocity.x > 0) {
@@ -167,7 +165,7 @@ class Rino extends SpriteAnimationGroupComponent
   }
 
   void _checkVerticalCollisions() {
-    for (final block in collisionBlocks) {
+    for (final block in gameRef.collisionBlocks) {
       if (block.isPlatform) {
         if (checkCollision(this, block)) {
           if (velocity.y > 0) {

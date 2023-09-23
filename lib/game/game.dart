@@ -36,6 +36,7 @@ class MyGame extends FlameGame
 
   GameManager gameManager = GameManager();
   HiveController hiveController = HiveController();
+
   List<CollisionBlock> collisionBlocks = [];
 
   bool isInited = false;
