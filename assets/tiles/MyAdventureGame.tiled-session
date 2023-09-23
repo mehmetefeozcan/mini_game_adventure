@@ -18,22 +18,22 @@
                 2
             ],
             "scale": 0.9332,
-            "selectedLayer": 1,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 490.7843977711102,
+                "x": 437.20531504500644,
                 "y": 181.09729961423062
             }
         },
         "level_02.tmx": {
             "expandedObjectLayers": [
-                8,
-                7
+                3,
+                2
             ],
-            "scale": 0.3957,
-            "selectedLayer": 2,
+            "scale": 0.5188,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 634.3189284811726,
-                "y": 424.56406368460944
+                "x": 792.2127987663839,
+                "y": 269.8535080956052
             }
         },
         "level_03.tmx": {
@@ -41,11 +41,11 @@
                 3,
                 2
             ],
-            "scale": 0.3978,
-            "selectedLayer": 1,
+            "scale": 0.6577,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 1015.5857214680744,
-                "y": 218.70286576168917
+                "x": 647.7117226699103,
+                "y": 270.6401094724038
             }
         },
         "level_04.tmx": {
@@ -62,11 +62,11 @@
         }
     },
     "last.imagePath": "/Users/mehmetefeozcan/Desktop/workspace-test/tile_map_game/assets/images/Terrain",
-    "map.height": 22,
+    "map.height": 23,
     "map.lastUsedFormat": "tmx",
     "map.tileHeight": 16,
     "map.tileWidth": 16,
-    "map.width": 46,
+    "map.width": 100,
     "openFiles": [
         "level_04.tmx",
         "level_03.tmx",
@@ -74,12 +74,12 @@
         "level_02.tmx"
     ],
     "project": "MyAdventureGame.tiled-project",
-    "property.type": "bool",
+    "property.type": "string",
     "recentFiles": [
         "level_02.tmx",
         "level_01.tmx",
-        "level_03.tmx",
         "level_04.tmx",
+        "level_03.tmx",
         "MyAdventureGameTile.tsx"
     ],
     "resizeMap.removeObjects": false,

@@ -152,6 +152,8 @@ class MyGame extends FlameGame
     gameManager.health.value = 2;
     player.size = Vector2(34, 34);
 
+    collisionBlocks = [];
+
     await Future.delayed(const Duration(seconds: 1), () async {
       Level world = Level(
         player: player,
