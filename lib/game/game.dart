@@ -81,8 +81,10 @@ class MyGame extends FlameGame
         }
 
         // Dikey Kamera Hareketi
-        if (screenMidY < player.position.y) {
-          cam.viewport.position.y -= centerDiffY;
+        if (maxHeight > 368) {
+          if (screenMidY < player.position.y) {
+            cam.viewport.position.y -= centerDiffY;
+          }
         }
       }
     }

@@ -41,11 +41,11 @@
                 3,
                 2
             ],
-            "scale": 0.6577,
-            "selectedLayer": 2,
+            "scale": 0.7273,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 647.7117226699103,
-                "y": 270.6401094724038
+                "x": 1185.2055547916955,
+                "y": 280.48948164443834
             }
         },
         "level_04.tmx": {
@@ -53,11 +53,27 @@
                 3,
                 2
             ],
-            "scale": 0.4582,
-            "selectedLayer": 1,
+            "scale": 1.2075,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 809.6900916630293,
-                "y": 419.03099083369705
+                "x": 1242.2360248447203,
+                "y": 291.51138716356104
+            }
+        },
+        "level_05.tmx": {
+            "scale": 0.5409062499999999,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 800.5084060315444,
+                "y": 184.8749205615576
+            }
+        },
+        "level_06.tmx": {
+            "scale": 0.5409062499999999,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 800.5084060315444,
+                "y": 184.8749205615576
             }
         }
     },
@@ -76,6 +92,7 @@
     "project": "MyAdventureGame.tiled-project",
     "property.type": "string",
     "recentFiles": [
+        "level_06.tmx",
         "level_02.tmx",
         "level_01.tmx",
         "level_04.tmx",

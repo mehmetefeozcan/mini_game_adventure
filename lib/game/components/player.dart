@@ -87,6 +87,10 @@ class Player extends SpriteAnimationGroupComponent
         _checkVerticalCollisions();
       }
 
+      if (gameRef.maxHeight == 368 && position.y > 368) {
+        _respawn();
+      }
+
       accumulatedTime -= fixedDeltaTime;
     }
     super.update(dt);
@@ -101,7 +105,9 @@ class Player extends SpriteAnimationGroupComponent
       if (other is Fruit) other.collidedWithPlayer();
       if (other is Checkpoint) _reachedCheckpoint();
       if (other is FallingPlatform) jumpPlatform(other);
-      if (other is Saw || other is Pig || other is Rino) _respawn();
+      if (other is Saw || other is Pig || other is Rino || other is Spike) {
+        _respawn();
+      }
       if (other is BeeBullet) {
         other.removeBullet();
         _respawn();
