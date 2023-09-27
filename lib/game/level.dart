@@ -121,9 +121,11 @@ class Level extends World with HasGameRef<MyGame> {
               break;
             }
             if (spawnPoint.name == 'Platform') {
+              final isVertical = spawnPoint.properties.getValue('isVertical');
               final offNeg = spawnPoint.properties.getValue('offNeg');
               final offPos = spawnPoint.properties.getValue('offPos');
-              final platform = FallingPlatform(
+              final platform = FlyPlatform(
+                isVertical: isVertical,
                 offNeg: offNeg,
                 offPos: offPos,
                 position: Vector2(spawnPoint.x, spawnPoint.y),

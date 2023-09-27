@@ -8,4 +8,4 @@ export 'traps/saw.dart';
 export 'traps/trampoline.dart';
 export 'enemies/bee.dart';
 export 'traps/spike.dart';
-export 'traps/falling_platform.dart';
+export 'traps/fly_platform.dart';

@@ -20,16 +20,19 @@
             "scale": 0.9332,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 437.20531504500644,
-                "y": 181.09729961423062
+                "x": 545.4350621517359,
+                "y": 180.02571795970857
             }
         },
         "level_02.tmx": {
-            "scale": 0.5188,
+            "expandedObjectLayers": [
+                8
+            ],
+            "scale": 0.8708,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 792.2127987663839,
-                "y": 269.8535080956052
+                "x": 229.67386311437753,
+                "y": 212.44832338079925
             }
         },
         "level_03.tmx": {
@@ -37,11 +40,11 @@
                 3,
                 2
             ],
-            "scale": 0.7273,
+            "scale": 2.5602,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 1306.2010174618454,
-                "y": -34.37371098583799
+                "x": 1519.412545894852,
+                "y": 296.46121396765875
             }
         },
         "level_04.tmx": {
@@ -49,19 +52,23 @@
                 3,
                 2
             ],
-            "scale": 1.9354,
+            "scale": 0.8548,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 1288.1058179187764,
-                "y": 233.5434535496538
+                "x": 739.3542349087506,
+                "y": 290.1263453439402
             }
         },
         "level_05.tmx": {
-            "scale": 0.5409062499999999,
-            "selectedLayer": 0,
+            "expandedObjectLayers": [
+                4,
+                2
+            ],
+            "scale": 2.621,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 800.5084060315444,
-                "y": 184.8749205615576
+                "x": 310.18695154521174,
+                "y": 239.98473864937048
             }
         },
         "level_06.tmx": {
@@ -87,7 +94,7 @@
         "level_05.tmx"
     ],
     "project": "MyAdventureGame.tiled-project",
-    "property.type": "string",
+    "property.type": "bool",
     "recentFiles": [
         "level_01.tmx",
         "level_02.tmx",

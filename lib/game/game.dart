@@ -256,6 +256,7 @@ class MyGame extends FlameGame
 
   void nextLevel() {
     loadNextLevel();
+    gameManager.health.value = 2;
 
     removeOverlays();
     overlays.add('game');

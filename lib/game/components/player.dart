@@ -104,7 +104,7 @@ class Player extends SpriteAnimationGroupComponent
       if (other is Fan) _fanJump(_dt, other.jumpSpeed);
       if (other is Fruit) other.collidedWithPlayer();
       if (other is Checkpoint) _reachedCheckpoint();
-      if (other is FallingPlatform) jumpPlatform(other);
+      if (other is FlyPlatform) jumpPlatform(other);
       if (other is Saw || other is Pig || other is Rino || other is Spike) {
         _respawn();
       }

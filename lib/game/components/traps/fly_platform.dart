@@ -4,13 +4,14 @@ import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:mini_game_adventure/game/game.dart';
 
-class FallingPlatform extends SpriteAnimationComponent
+class FlyPlatform extends SpriteAnimationComponent
     with HasGameRef<MyGame>, CollisionCallbacks {
-  final double jumpSpeed;
+  final bool isVertical;
   final double offNeg;
   final double offPos;
-  FallingPlatform({
-    this.jumpSpeed = 100,
+
+  FlyPlatform({
+    this.isVertical = false,
     this.offNeg = 0,
     this.offPos = 0,
     position,
@@ -28,8 +29,13 @@ class FallingPlatform extends SpriteAnimationComponent
     priority = -1;
     add(RectangleHitbox());
 
-    rangeNeg = position.y - offNeg * tileSize;
-    rangePos = position.y + offPos * tileSize;
+    if (isVertical) {
+      rangeNeg = position.y - offNeg * tileSize;
+      rangePos = position.y + offPos * tileSize;
+    } else {
+      rangeNeg = position.x - offNeg * tileSize;
+      rangePos = position.x + offPos * tileSize;
+    }
 
     animation = SpriteAnimation.fromFrameData(
         game.images.fromCache('Traps/Falling Platforms/On (32x10).png'),
@@ -43,7 +49,11 @@ class FallingPlatform extends SpriteAnimationComponent
 
   @override
   void update(double dt) {
-    _moveVertically(dt);
+    if (isVertical) {
+      _moveVertically(dt);
+    } else {
+      _moveHorizontally(dt);
+    }
 
     super.update(dt);
   }
@@ -55,5 +65,14 @@ class FallingPlatform extends SpriteAnimationComponent
       moveDirection = 1;
     }
     position.y += moveDirection * moveSpeed * dt;
+  }
+
+  void _moveHorizontally(double dt) {
+    if (position.x >= rangePos) {
+      moveDirection = -1;
+    } else if (position.x <= rangeNeg) {
+      moveDirection = 1;
+    }
+    position.x += moveDirection * moveSpeed * dt;
   }
 }
