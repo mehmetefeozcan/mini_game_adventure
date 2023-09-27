@@ -259,8 +259,10 @@ class Player extends SpriteAnimationGroupComponent
 
     if (velocity.x < 0 && scale.x > 0) {
       flipHorizontallyAroundCenter();
+      isFaceRight = false;
     } else if (velocity.x > 0 && scale.x < 0) {
       flipHorizontallyAroundCenter();
+      isFaceRight = true;
     }
 
     // Check if moving, set running
