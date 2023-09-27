@@ -59,7 +59,7 @@
   <object id="30" name="Apple" type="Fruit" x="416" y="272" width="32" height="32"/>
   <object id="31" name="Apple" type="Fruit" x="616" y="240" width="32" height="32"/>
   <object id="32" name="Apple" type="Fruit" x="1024" y="304" width="32" height="32"/>
-  <object id="33" name="Checkpoint" type="Checkpoint" x="1472" y="240" width="64" height="64"/>
+  <object id="33" name="Checkpoint" type="Checkpoint" x="1456" y="240" width="64" height="64"/>
   <object id="38" name="Spike" type="Trap" x="592" y="288" width="32" height="32"/>
   <object id="39" name="Spike" type="Trap" x="608" y="288" width="32" height="32"/>
   <object id="40" name="Spike" type="Trap" x="1120" y="288" width="32" height="32"/>
@@ -68,8 +68,8 @@
   <object id="43" name="Spike" type="Trap" x="640" y="288" width="32" height="32"/>
   <object id="44" name="Spike" type="Trap" x="656" y="288" width="32" height="32"/>
   <object id="45" name="Spike" type="Trap" x="672" y="288" width="32" height="32"/>
-  <object id="46" name="Pig" type="Enemy" x="1440" y="272" width="32" height="32"/>
-  <object id="47" name="Apple" type="Fruit" x="1336" y="272" width="32" height="32"/>
-  <object id="48" name="Apple" type="Fruit" x="1416" y="272" width="32" height="32"/>
+  <object id="46" name="Pig" type="Enemy" x="1520" y="272" width="32" height="32"/>
+  <object id="47" name="Apple" type="Fruit" x="1280" y="272" width="32" height="32"/>
+  <object id="48" name="Apple" type="Fruit" x="1360" y="272" width="32" height="32"/>
  </objectgroup>
 </map>
