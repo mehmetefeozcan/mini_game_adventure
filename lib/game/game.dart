@@ -34,6 +34,8 @@ class MyGame extends FlameGame
   double centerDiffX = 0;
   double centerDiffY = 0;
 
+  bool playerFaceRight = true;
+
   GameManager gameManager = GameManager();
   HiveController hiveController = HiveController();
 
@@ -67,10 +69,15 @@ class MyGame extends FlameGame
         cam.viewport.position = Vector2(-size.x / 2, 0);
 
         final screenMidX = cam.viewport.size.x / 2;
-        centerDiffX = player.position.x - screenMidX;
 
         final screenMidY = cam.viewport.size.y / 1.2;
         centerDiffY = player.position.y - screenMidY;
+
+        if (player.isFaceRight && playerFaceRight) {
+          centerDiffX = player.position.x - screenMidX;
+        } else if (!player.isFaceRight && !playerFaceRight) {
+          centerDiffX = player.position.x - screenMidX * 1.1;
+        }
 
         // Yatay Kamera Hareketi
         if (screenMidX < player.position.x &&
@@ -86,6 +93,8 @@ class MyGame extends FlameGame
             cam.viewport.position.y -= centerDiffY;
           }
         }
+
+        playerFaceRight = player.isFaceRight;
       }
     }
 
