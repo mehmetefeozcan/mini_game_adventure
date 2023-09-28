@@ -16,11 +16,16 @@ class HiveController {
       };
 
       final levels = [
-        {"level": "level_01", "isUnlocked": true},
-        {"level": "level_02", "isUnlocked": false},
-        {"level": "level_03", "isUnlocked": false},
-        {"level": "level_04", "isUnlocked": false},
-        {"level": "level_05", "isUnlocked": false},
+        {"level": "level_01", "isUnlocked": true, "star": 0},
+        {"level": "level_02", "isUnlocked": false, "star": 0},
+        {"level": "level_03", "isUnlocked": false, "star": 0},
+        {"level": "level_04", "isUnlocked": false, "star": 0},
+        {"level": "level_05", "isUnlocked": false, "star": 0},
+        {"level": "level_06", "isUnlocked": false, "star": 0},
+        {"level": "level_07", "isUnlocked": false, "star": 0},
+        {"level": "level_08", "isUnlocked": false, "star": 0},
+        {"level": "level_09", "isUnlocked": false, "star": 0},
+        {"level": "level_10", "isUnlocked": false, "star": 0},
       ];
 
       await box.put('gameData', data);

@@ -72,15 +72,46 @@ class _EpisodesViewState extends State<EpisodesView> {
   List<Widget> _episodes() {
     List<Widget> episodes = [];
 
-    for (var i = 0; i < levels.length; i += 2) {
-      if (levels.length > i + 1) {
+    for (var i = 0; i < levels.length; i += 5) {
+      if (levels.length > i + 4) {
         episodes.add(
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              _episodeCard(context, i + 1, levels[i]['isUnlocked']),
+              _episodeCard(
+                context,
+                i + 1,
+                levels[i]['isUnlocked'],
+                levels[i]['star'],
+              ),
               SizedBox(width: context.highValue),
-              _episodeCard(context, i + 2, levels[i + 1]['isUnlocked']),
+              _episodeCard(
+                context,
+                i + 2,
+                levels[i + 1]['isUnlocked'],
+                levels[i + 1]['star'],
+              ),
+              SizedBox(width: context.highValue),
+              _episodeCard(
+                context,
+                i + 3,
+                levels[i + 2]['isUnlocked'],
+                levels[i + 2]['star'],
+              ),
+              SizedBox(width: context.highValue),
+              _episodeCard(
+                context,
+                i + 4,
+                levels[i + 3]['isUnlocked'],
+                levels[i + 3]['star'],
+              ),
+              SizedBox(width: context.highValue),
+              _episodeCard(
+                context,
+                i + 5,
+                levels[i + 4]['isUnlocked'],
+                levels[i + 4]['star'],
+              ),
             ],
           ),
         );
@@ -89,7 +120,12 @@ class _EpisodesViewState extends State<EpisodesView> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              _episodeCard(context, i + 1, levels[i]['isUnlocked']),
+              _episodeCard(
+                context,
+                i + 1,
+                levels[i]['isUnlocked'],
+                levels[i]['star'],
+              ),
               SizedBox(width: context.highValue),
               SizedBox(
                 width: context.width * 0.06,
@@ -108,7 +144,8 @@ class _EpisodesViewState extends State<EpisodesView> {
     return episodes;
   }
 
-  Widget _episodeCard(BuildContext context, int episode, bool isUnlocked) {
+  Widget _episodeCard(
+      BuildContext context, int episode, bool isUnlocked, int star) {
     return InkWell(
       onTap: () {
         if (isUnlocked) {
@@ -118,8 +155,8 @@ class _EpisodesViewState extends State<EpisodesView> {
       },
       child: Container(
         padding: EdgeInsets.zero,
-        width: context.width * 0.06,
-        height: context.height * 0.1,
+        width: context.width * 0.1,
+        height: context.height * 0.16,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           border: Border.all(
@@ -129,9 +166,16 @@ class _EpisodesViewState extends State<EpisodesView> {
         child: Stack(
           children: [
             Center(
-              child: Text(
-                "$episode",
-                style: context.textTheme.titleLarge,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  const SizedBox(height: 10),
+                  Text(
+                    "$episode",
+                    style: context.textTheme.titleLarge,
+                  ),
+                  episodeStar(context, star),
+                ],
               ),
             ),
             isUnlocked
@@ -140,7 +184,7 @@ class _EpisodesViewState extends State<EpisodesView> {
                     child: Icon(
                       Icons.lock_outline,
                       weight: 700,
-                      size: 32,
+                      size: 36,
                       color: Colors.redAccent.withOpacity(0.6),
                     ),
                   )
@@ -149,4 +193,26 @@ class _EpisodesViewState extends State<EpisodesView> {
       ),
     );
   }
+
+  Widget episodeStar(BuildContext context, int starLevel) {
+    List<Widget> stars = [];
+
+    for (var i = 1; i <= 3; i++) {
+      bool isAmber = starLevel >= i;
+      stars.add(
+        Icon(Icons.star, color: isAmber ? Colors.amber : Colors.grey, size: 16),
+      );
+      stars.add(SizedBox(width: context.lowValue));
+    }
+    stars.removeAt(5);
+
+    return Row(mainAxisAlignment: MainAxisAlignment.center, children: stars);
+  }
 }
+
+
+/* const Icon(Icons.star, color: Colors.amber, size: 16),
+      SizedBox(width: context.lowValue),
+      const Icon(Icons.star, color: Colors.amber, size: 16),
+      SizedBox(width: context.lowValue),
+      const Icon(Icons.star, color: Colors.grey, size: 16), */
