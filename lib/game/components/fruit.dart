@@ -61,5 +61,6 @@ class Fruit extends SpriteAnimationComponent
 
     await animationTicker?.completed;
     removeFromParent();
+    gameRef.collectedFruitCount++;
   }
 }

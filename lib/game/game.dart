@@ -47,6 +47,9 @@ class MyGame extends FlameGame
 
   bool isBeeBulletHit = false;
 
+  int fruitCount = 0;
+  int collectedFruitCount = 0;
+
   @override
   FutureOr<void> onLoad() async {
     // Load all images into cache
@@ -145,10 +148,6 @@ class MyGame extends FlameGame
 
   void loadNextLevel() async {
     removeWhere((component) => component is Level);
-    final lastLevel = await hiveController.fetchGameData();
-    if (currentLevelIndex == lastLevel['lastLevel'] - 1) {
-      await hiveController.updateLevel(currentLevelIndex + 1, this);
-    }
 
     if (currentLevelIndex < levelNames.length - 1) {
       currentLevelIndex++;
@@ -243,7 +242,7 @@ class MyGame extends FlameGame
     pauseEngine();
   }
 
-  void finishLevel() {
+  finishLevel() async {
     const reachedCheckpointDuration = Duration(milliseconds: 500);
     Future.delayed(reachedCheckpointDuration, () {
       player.size = Vector2.zero();
@@ -252,6 +251,11 @@ class MyGame extends FlameGame
       removeOverlays();
       overlays.add('finish');
     });
+
+    final lastLevel = await hiveController.fetchGameData();
+    if (currentLevelIndex == lastLevel['lastLevel'] - 1) {
+      await hiveController.updateLevel(currentLevelIndex + 1, this);
+    }
   }
 
   void nextLevel() {

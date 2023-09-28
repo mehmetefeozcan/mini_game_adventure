@@ -76,6 +76,7 @@ class Level extends World with HasGameRef<MyGame> {
               size: Vector2(spawnPoint.width, spawnPoint.height),
             );
             add(fruit);
+            gameRef.fruitCount++;
             break;
 
           case 'Trap':

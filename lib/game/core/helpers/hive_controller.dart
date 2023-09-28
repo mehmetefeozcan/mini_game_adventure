@@ -56,6 +56,8 @@ class HiveController {
         List levels = box.get('levels');
 
         levels[level]['isUnlocked'] = true;
+        levels[level - 1]['star'] =
+            game.collectedFruitCount == game.fruitCount ? 3 : 1;
 
         await box.put("gameData", data);
         await box.put("levels", levels);
