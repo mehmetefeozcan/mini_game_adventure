@@ -1,6 +1,7 @@
 import 'package:mini_game_adventure/game/core/extension/context_extension.dart';
 import 'package:mini_game_adventure/game/game.dart';
 import 'package:flutter/material.dart';
+import 'package:mini_game_adventure/main.dart';
 
 class FinishEpisodeView extends StatefulWidget {
   final MyGame game;
@@ -20,6 +21,8 @@ class _FinishEpisodeViewState extends State<FinishEpisodeView> {
             : Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  episodeStar(context, game.star),
+                  SizedBox(height: context.lowValue),
                   Text(
                     "Bölüm Geçildi!",
                     style: context.textTheme.headlineSmall,
@@ -34,7 +37,7 @@ class _FinishEpisodeViewState extends State<FinishEpisodeView> {
                       setState(() {});
                     },
                   ),
-                  SizedBox(height: context.highValue),
+                  SizedBox(height: context.mediumValue),
                   _menuButton(
                     context,
                     "Tekrar Oyna",
@@ -43,7 +46,7 @@ class _FinishEpisodeViewState extends State<FinishEpisodeView> {
                       setState(() {});
                     },
                   ),
-                  SizedBox(height: context.highValue),
+                  SizedBox(height: context.mediumValue),
                   _menuButton(
                     context,
                     "Çık",
@@ -66,5 +69,20 @@ class _FinishEpisodeViewState extends State<FinishEpisodeView> {
         style: context.textTheme.titleLarge,
       ),
     );
+  }
+
+  Widget episodeStar(BuildContext context, int starLevel) {
+    List<Widget> stars = [];
+
+    for (var i = 1; i <= 3; i++) {
+      bool isAmber = starLevel >= i;
+      stars.add(
+        Icon(Icons.star, color: isAmber ? Colors.amber : Colors.grey, size: 32),
+      );
+      stars.add(SizedBox(width: context.lowValue));
+    }
+    stars.removeAt(5);
+
+    return Row(mainAxisAlignment: MainAxisAlignment.center, children: stars);
   }
 }

@@ -49,6 +49,7 @@ class MyGame extends FlameGame
 
   int fruitCount = 0;
   int collectedFruitCount = 0;
+  int star = 0;
 
   @override
   FutureOr<void> onLoad() async {
@@ -251,10 +252,18 @@ class MyGame extends FlameGame
       removeOverlays();
       overlays.add('finish');
     });
+    final percent = (collectedFruitCount * 100) / fruitCount;
+    if (percent < 50) {
+      star = 1;
+    } else if (percent >= 50 && percent < 100) {
+      star = 2;
+    } else if (percent == 100) {
+      star = 3;
+    }
 
     final lastLevel = await hiveController.fetchGameData();
     if (currentLevelIndex == lastLevel['lastLevel'] - 1) {
-      await hiveController.updateLevel(currentLevelIndex + 1, this);
+      await hiveController.updateLevel(currentLevelIndex + 1, this, star);
     }
   }
 
