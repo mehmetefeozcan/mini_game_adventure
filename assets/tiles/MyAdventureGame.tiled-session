@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "level_04.tmx",
+    "activeFile": "",
     "expandedProjectPaths": [
         "."
     ],
@@ -18,10 +18,10 @@
                 2
             ],
             "scale": 0.8785,
-            "selectedLayer": 1,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 418.8958451906659,
-                "y": 180.99032441661922
+                "x": 461.5822424587366,
+                "y": 179.85202048947065
             }
         },
         "level_02.tmx": {
@@ -32,32 +32,32 @@
             "scale": 0.4334,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 766.0359944623904,
+                "x": 767.1896631287495,
                 "y": 242.27041993539456
             }
         },
         "level_03.tmx": {
             "expandedObjectLayers": [
-                3,
-                2
+                2,
+                3
             ],
             "scale": 2.5602,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 1026.8729005546443,
+                "x": 1026.6776033122412,
                 "y": 226.15420670260139
             }
         },
         "level_04.tmx": {
             "expandedObjectLayers": [
-                3,
-                2
+                2,
+                3
             ],
             "scale": 0.8548,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 839.9625643425363,
-                "y": 281.9372952737483
+                "x": 839.3776321946655,
+                "y": 283.10715956949
             }
         },
         "level_05.tmx": {
@@ -68,16 +68,48 @@
             "scale": 1.1235,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 642.6346239430352,
+                "x": 642.1895861148198,
                 "y": 449.4882064975523
             }
         },
         "level_06.tmx": {
-            "scale": 0.5409062499999999,
+            "scale": 0.4291,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 800.5084060315444,
-                "y": 184.8749205615576
+                "x": 707.2943369843861,
+                "y": 121.18387322302499
+            }
+        },
+        "level_07.tmx": {
+            "scale": 0.5783125,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 801.4697935804603,
+                "y": 185.02107424619044
+            }
+        },
+        "level_08.tmx": {
+            "scale": 0.5783125,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 801.4697935804603,
+                "y": 185.02107424619044
+            }
+        },
+        "level_09.tmx": {
+            "scale": 0.5783125,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 801.4697935804603,
+                "y": 185.02107424619044
+            }
+        },
+        "level_10.tmx": {
+            "scale": 0.5783125,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 801.4697935804603,
+                "y": 185.02107424619044
             }
         }
     },
@@ -88,21 +120,20 @@
     "map.tileWidth": 16,
     "map.width": 100,
     "openFiles": [
-        "level_01.tmx",
-        "level_02.tmx",
-        "level_03.tmx",
-        "level_04.tmx",
-        "level_05.tmx"
     ],
     "project": "MyAdventureGame.tiled-project",
     "property.type": "bool",
     "recentFiles": [
-        "level_01.tmx",
-        "level_02.tmx",
-        "level_03.tmx",
-        "level_05.tmx",
-        "level_04.tmx",
         "level_06.tmx",
+        "level_08.tmx",
+        "level_09.tmx",
+        "level_10.tmx",
+        "level_05.tmx",
+        "level_07.tmx",
+        "level_04.tmx",
+        "level_03.tmx",
+        "level_02.tmx",
+        "level_01.tmx",
         "MyAdventureGameTile.tsx"
     ],
     "resizeMap.removeObjects": false,
