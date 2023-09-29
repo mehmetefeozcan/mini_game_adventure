@@ -265,6 +265,8 @@ class MyGame extends FlameGame
     if (currentLevelIndex == lastLevel['lastLevel'] - 1) {
       await hiveController.updateLevel(currentLevelIndex + 1, this, star);
     }
+    collectedFruitCount = 0;
+    fruitCount = 0;
   }
 
   void nextLevel() {
