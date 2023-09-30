@@ -1,7 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:mini_game_adventure/game/game.dart';
+import 'package:flutter/material.dart';
 import 'package:flame/components.dart';
-
 
 enum GameState { home, game, pause, episode, settings, gameOver }
 

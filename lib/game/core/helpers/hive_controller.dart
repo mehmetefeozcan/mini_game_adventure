@@ -1,6 +1,6 @@
-import 'package:flutter/foundation.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 import 'package:mini_game_adventure/game/game.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:flutter/foundation.dart';
 
 class HiveController {
   final box = Hive.box('gameBox');
