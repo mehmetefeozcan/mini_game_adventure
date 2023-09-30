@@ -253,12 +253,12 @@ class MyGame extends FlameGame
       overlays.add('finish');
     });
     final percent = (collectedFruitCount * 100) / fruitCount;
-    if (percent < 50) {
-      star = 1;
+    if (percent == 100 && gameManager.health.value == 2) {
+      star = 3;
     } else if (percent >= 50 && percent < 100) {
       star = 2;
-    } else if (percent == 100) {
-      star = 3;
+    } else if (0 < percent && percent < 50) {
+      star = 1;
     }
 
     final lastLevel = await hiveController.fetchGameData();

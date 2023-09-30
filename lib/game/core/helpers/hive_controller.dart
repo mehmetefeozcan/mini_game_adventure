@@ -56,6 +56,7 @@ class HiveController {
         List levels = box.get('levels');
 
         levels[level]['isUnlocked'] = true;
+
         levels[level - 1]['star'] = star;
 
         await box.put("gameData", data);
