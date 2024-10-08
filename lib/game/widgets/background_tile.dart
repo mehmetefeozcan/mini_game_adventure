@@ -20,7 +20,7 @@ class BackgroundTile extends ParallaxComponent {
   FutureOr<void> onLoad() async {
     priority = -10;
     size = Vector2.all(64);
-    parallax = await gameRef.loadParallax(
+    parallax = await game.loadParallax(
       [ParallaxImageData('Background/$color.png')],
       baseVelocity: Vector2(0, -scrollSpeed),
       repeat: ImageRepeat.repeat,
@@ -31,10 +31,9 @@ class BackgroundTile extends ParallaxComponent {
 
   @override
   void update(double dt) {
-    position = -(gameRef as MyGame).cam.viewport.position;
-    position = Vector2(
-        -(gameRef as MyGame).cam.viewport.position.x + -size.x / 2,
-        -(gameRef as MyGame).cam.viewport.position.y);
+    position = -(game as MyGame).cam.viewport.position;
+    position = Vector2(-(game as MyGame).cam.viewport.position.x + -size.x / 2,
+        -(game as MyGame).cam.viewport.position.y);
     super.update(dt);
   }
 }

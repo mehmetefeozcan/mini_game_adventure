@@ -115,16 +115,18 @@ class Player extends SpriteAnimationGroupComponent
   }
 
   @override
-  bool onKeyEvent(RawKeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
+  @override
+  bool onKeyEvent(KeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
     horizontalMovement = 0;
+
     final isRightKeyPressed =
         keysPressed.contains(LogicalKeyboardKey.arrowRight);
     final isLeftKeyPressed = keysPressed.contains(LogicalKeyboardKey.arrowLeft);
 
-    hasJumped = keysPressed.contains(LogicalKeyboardKey.space);
-
     horizontalMovement += isLeftKeyPressed ? -1 : 0;
     horizontalMovement += isRightKeyPressed ? 1 : 0;
+
+    hasJumped = keysPressed.contains(LogicalKeyboardKey.space);
 
     return super.onKeyEvent(event, keysPressed);
   }
@@ -179,7 +181,7 @@ class Player extends SpriteAnimationGroupComponent
   void _updatePlayerMovement(double dt) {
     if (hasJumped && isOnGround) _playerJump(dt);
 
-    // if (velocity.y > _gravity) isOnGround = false; // optional
+    if (velocity.y > _gravity) isOnGround = false; // optional
 
     velocity.x = horizontalMovement * moveSpeed;
     position.x += velocity.x * dt;
