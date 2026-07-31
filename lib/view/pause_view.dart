@@ -15,7 +15,7 @@ class _PauseViewState extends State<PauseView> {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Colors.white.withOpacity(0.5),
+      color: Colors.white.withValues(alpha: 0.5),
       child: SizedBox(
         width: context.width,
         height: context.height,

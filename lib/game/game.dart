@@ -23,6 +23,7 @@ class MyGame extends FlameGame
   Player player = Player(character: 'Ninja Frog');
 
   late JoystickComponent joystick;
+  late JumpButton jumpButton;
   late CameraComponent cam;
 
   @override
@@ -55,11 +56,9 @@ class MyGame extends FlameGame
   FutureOr<void> onLoad() async {
     // Load all images into cache
     await images.loadAllImages();
-    //_loadLevel();
 
     addJoystick();
-
-    add(JumpButton());
+    jumpButton = JumpButton();
     add(gameManager);
 
     return super.onLoad();
@@ -125,8 +124,6 @@ class MyGame extends FlameGame
       ),
       margin: const EdgeInsets.only(left: 32, bottom: 32),
     );
-
-    add(joystick);
   }
 
   void updateJoystick() {
@@ -173,6 +170,12 @@ class MyGame extends FlameGame
 
       cam = CameraComponent(world: world);
       cam.viewfinder.anchor = Anchor.topCenter;
+
+      if (joystick.parent != null) joystick.removeFromParent();
+      if (jumpButton.parent != null) jumpButton.removeFromParent();
+
+      cam.viewport.add(joystick);
+      cam.viewport.add(jumpButton);
 
       await addAll([world, cam]);
 

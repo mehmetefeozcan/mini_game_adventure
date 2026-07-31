@@ -5,7 +5,7 @@ import 'package:flame/components.dart';
 import 'package:mini_game_adventure/game/game.dart';
 
 class Fan extends SpriteAnimationComponent
-    with HasGameRef<MyGame>, CollisionCallbacks {
+    with HasGameReference<MyGame>, CollisionCallbacks {
   final double jumpSpeed;
   final double fanSpeed;
   Fan({

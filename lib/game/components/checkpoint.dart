@@ -6,7 +6,7 @@ import 'package:mini_game_adventure/game/components/player.dart';
 import 'package:mini_game_adventure/game/game.dart';
 
 class Checkpoint extends SpriteAnimationComponent
-    with HasGameRef<MyGame>, CollisionCallbacks {
+    with HasGameReference<MyGame>, CollisionCallbacks {
   Checkpoint({
     position,
     size,

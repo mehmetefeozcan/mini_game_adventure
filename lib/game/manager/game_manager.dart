@@ -4,7 +4,7 @@ import 'package:flame/components.dart';
 
 enum GameState { home, game, pause, episode, settings, gameOver }
 
-class GameManager extends Component with HasGameRef<MyGame> {
+class GameManager extends Component with HasGameReference<MyGame> {
   GameManager();
 
   GameState state = GameState.home;

@@ -140,7 +140,6 @@ class _EpisodesViewState extends State<EpisodesView> {
         episodes.add(SizedBox(height: context.mediumValue));
       }
     }
-    setState(() {});
     return episodes;
   }
 
@@ -185,7 +184,7 @@ class _EpisodesViewState extends State<EpisodesView> {
                       Icons.lock_outline,
                       weight: 700,
                       size: 36,
-                      color: Colors.redAccent.withOpacity(0.6),
+                      color: Colors.redAccent.withValues(alpha: 0.6),
                     ),
                   )
           ],

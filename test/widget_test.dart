@@ -1,30 +1,32 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:mini_game_adventure/main.dart';
+import 'package:hive/hive.dart';
+import 'package:mini_game_adventure/game/core/helpers/hive_controller.dart';
+import 'package:mini_game_adventure/game/game.dart';
+import 'package:mini_game_adventure/view/home_view.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  TestWidgetsFlutterBinding.ensureInitialized();
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+  setUpAll(() async {
+    final tempDir = Directory.systemTemp.createTempSync('hive_test');
+    Hive.init(tempDir.path);
+    await Hive.openBox('gameBox');
+    await HiveController().setFirstGameData();
+  });
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+  testWidgets('HomeView displays menu buttons', (WidgetTester tester) async {
+    final game = MyGame();
+    await tester.pumpWidget(
+      MaterialApp(
+        home: HomeView(game: game),
+      ),
+    );
+    await tester.pumpAndSettle();
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    expect(find.text('Oyna'), findsOneWidget);
+    expect(find.text('Bölümler'), findsOneWidget);
   });
 }

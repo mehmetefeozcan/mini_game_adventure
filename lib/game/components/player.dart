@@ -18,7 +18,7 @@ enum PlayerState {
 }
 
 class Player extends SpriteAnimationGroupComponent
-    with HasGameRef<MyGame>, KeyboardHandler, CollisionCallbacks {
+    with HasGameReference<MyGame>, KeyboardHandler, CollisionCallbacks {
   String character;
   Player({position, required this.character}) : super(position: position);
 
@@ -85,7 +85,7 @@ class Player extends SpriteAnimationGroupComponent
         _checkVerticalCollisions();
       }
 
-      if (gameRef.maxHeight == 368 && position.y > 368) {
+      if (game.maxHeight == 368 && position.y > 368) {
         _respawn();
       }
 
@@ -202,7 +202,7 @@ class Player extends SpriteAnimationGroupComponent
   }
 
   void _checkHorizontalCollisions() {
-    for (final block in gameRef.collisionBlocks) {
+    for (final block in game.collisionBlocks) {
       if (!block.isPlatform) {
         if (checkCollision(this, block)) {
           if (velocity.x > 0) {
@@ -227,7 +227,7 @@ class Player extends SpriteAnimationGroupComponent
   }
 
   void _checkVerticalCollisions() {
-    for (final block in gameRef.collisionBlocks) {
+    for (final block in game.collisionBlocks) {
       if (block.isPlatform) {
         if (checkCollision(this, block)) {
           if (velocity.y > 0) {
@@ -296,7 +296,7 @@ class Player extends SpriteAnimationGroupComponent
     position = startingPosition;
     _updatePlayerState();
 
-    gameRef.gameManager.health.value -= 1;
+    game.gameManager.health.value -= 1;
     Future.delayed(canMoveDuration, () => gotHit = false);
   }
 

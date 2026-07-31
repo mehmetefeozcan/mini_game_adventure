@@ -8,7 +8,7 @@ import 'dart:async';
 enum PigState { idle, running, walking, hit, appearing, disappearing }
 
 class Pig extends SpriteAnimationGroupComponent
-    with HasGameRef<MyGame>, CollisionCallbacks {
+    with HasGameReference<MyGame>, CollisionCallbacks {
   Pig({
     position,
   }) : super(position: position);
@@ -139,7 +139,7 @@ class Pig extends SpriteAnimationGroupComponent
   }
 
   void _checkHorizontalCollisions() {
-    for (final block in gameRef.collisionBlocks) {
+    for (final block in game.collisionBlocks) {
       if (!block.isPlatform) {
         if (checkCollision(this, block)) {
           if (velocity.x > 0) {
@@ -166,7 +166,7 @@ class Pig extends SpriteAnimationGroupComponent
   }
 
   void _checkVerticalCollisions() {
-    for (final block in gameRef.collisionBlocks) {
+    for (final block in game.collisionBlocks) {
       if (block.isPlatform) {
         if (checkCollision(this, block)) {
           if (velocity.y > 0) {

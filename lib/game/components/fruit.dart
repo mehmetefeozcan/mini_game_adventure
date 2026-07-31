@@ -6,7 +6,7 @@ import 'package:mini_game_adventure/game/core/helpers/custom_hitbox.dart';
 import 'package:mini_game_adventure/game/game.dart';
 
 class Fruit extends SpriteAnimationComponent
-    with HasGameRef<MyGame>, CollisionCallbacks {
+    with HasGameReference<MyGame>, CollisionCallbacks {
   final String fruit;
   Fruit({
     this.fruit = 'Apple',
@@ -61,6 +61,6 @@ class Fruit extends SpriteAnimationComponent
 
     await animationTicker?.completed;
     removeFromParent();
-    gameRef.collectedFruitCount++;
+    game.collectedFruitCount++;
   }
 }

@@ -7,7 +7,7 @@ import 'package:flame_tiled/flame_tiled.dart';
 import 'package:flame/components.dart';
 import 'dart:async';
 
-class Level extends World with HasGameRef<MyGame> {
+class Level extends World with HasGameReference<MyGame> {
   late TiledComponent level;
   late String levelName;
   late Player player;
@@ -76,7 +76,7 @@ class Level extends World with HasGameRef<MyGame> {
               size: Vector2(spawnPoint.width, spawnPoint.height),
             );
             add(fruit);
-            gameRef.fruitCount++;
+            game.fruitCount++;
             break;
 
           case 'Trap':
@@ -160,7 +160,7 @@ class Level extends World with HasGameRef<MyGame> {
               size: Vector2(collision.width, collision.height),
               isPlatform: true,
             );
-            gameRef.collisionBlocks.add(platform);
+            game.collisionBlocks.add(platform);
             add(platform);
             break;
           default:
@@ -168,7 +168,7 @@ class Level extends World with HasGameRef<MyGame> {
               position: Vector2(collision.x, collision.y),
               size: Vector2(collision.width, collision.height),
             );
-            gameRef.collisionBlocks.add(block);
+            game.collisionBlocks.add(block);
             add(block);
         }
       }

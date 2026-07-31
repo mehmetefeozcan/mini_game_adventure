@@ -9,7 +9,7 @@ import 'dart:async';
 enum BeeState { idle, hit, attack, appearing, disappearing }
 
 class Bee extends SpriteAnimationGroupComponent
-    with HasGameRef<MyGame>, CollisionCallbacks {
+    with HasGameReference<MyGame>, CollisionCallbacks {
   Bee({position}) : super(position: position);
 
   late final SpriteAnimation hitAnimation;
@@ -138,7 +138,7 @@ class Bee extends SpriteAnimationGroupComponent
   }
 
   void _checkHorizontalCollisions() {
-    for (final block in gameRef.collisionBlocks) {
+    for (final block in game.collisionBlocks) {
       if (!block.isPlatform) {
         if (checkCollision(this, block)) {
           if (velocity.x > 0) {
@@ -157,7 +157,7 @@ class Bee extends SpriteAnimationGroupComponent
   }
 
   void _checkVerticalCollisions() {
-    for (final block in gameRef.collisionBlocks) {
+    for (final block in game.collisionBlocks) {
       if (block.isPlatform) {
         if (checkCollision(this, block)) {
           if (velocity.y > 0) {
@@ -188,13 +188,13 @@ class Bee extends SpriteAnimationGroupComponent
     bullet = BeeBullet(position: bulletPos);
 
     if (bulletCount == 0) {
-      if (gameRef.player.position.x - 200 <= position.x &&
-          gameRef.player.position.x + 200 >= position.x) {
-        await gameRef.add(bullet);
+      if (game.player.position.x - 200 <= position.x &&
+          game.player.position.x + 200 >= position.x) {
+        await game.add(bullet);
         bulletCount = 1;
       }
     } else if (bulletCount == 1) {
-      if (gameRef.isBeeBulletHit) {
+      if (game.isBeeBulletHit) {
         bulletCount = 0;
       }
     }
@@ -214,7 +214,7 @@ class Bee extends SpriteAnimationGroupComponent
 }
 
 class BeeBullet extends SpriteComponent
-    with HasGameRef<MyGame>, CollisionCallbacks {
+    with HasGameReference<MyGame>, CollisionCallbacks {
   BeeBullet({position}) : super(position: position);
 
   final double _gravity = 2;
@@ -255,7 +255,7 @@ class BeeBullet extends SpriteComponent
 
   @override
   void update(double dt) {
-    collisionBlocks = gameRef.collisionBlocks;
+    collisionBlocks = game.collisionBlocks;
 
     accumulatedTime += dt;
 
@@ -271,7 +271,7 @@ class BeeBullet extends SpriteComponent
   }
 
   void _load() async {
-    sprite = Sprite(gameRef.images.fromCache('Enemies/Bee/Bullet.png'));
+    sprite = Sprite(game.images.fromCache('Enemies/Bee/Bullet.png'));
   }
 
   void _applyGravity(double dt) {
@@ -308,16 +308,16 @@ class BeeBullet extends SpriteComponent
     }
 
     if (isOnGround) {
-      gameRef.isBeeBulletHit = true;
+      game.isBeeBulletHit = true;
 
-      gameRef.remove(this);
+      game.remove(this);
     } else {
-      gameRef.isBeeBulletHit = false;
+      game.isBeeBulletHit = false;
     }
   }
 
   removeBullet() {
-    gameRef.isBeeBulletHit = true;
-    gameRef.remove(this);
+    game.isBeeBulletHit = true;
+    game.remove(this);
   }
 }

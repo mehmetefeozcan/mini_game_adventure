@@ -5,7 +5,7 @@ import 'package:flame/components.dart';
 import 'package:mini_game_adventure/game/game.dart';
 
 class FlyPlatform extends SpriteAnimationComponent
-    with HasGameRef<MyGame>, CollisionCallbacks {
+    with HasGameReference<MyGame>, CollisionCallbacks {
   final bool isVertical;
   final double offNeg;
   final double offPos;

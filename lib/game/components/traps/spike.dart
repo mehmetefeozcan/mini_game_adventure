@@ -6,7 +6,7 @@ import 'package:mini_game_adventure/game/core/helpers/custom_hitbox.dart';
 import 'package:mini_game_adventure/game/game.dart';
 
 class Spike extends SpriteAnimationComponent
-    with HasGameRef<MyGame>, CollisionCallbacks {
+    with HasGameReference<MyGame>, CollisionCallbacks {
   Spike({
     position,
     size,

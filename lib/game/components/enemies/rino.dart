@@ -8,7 +8,7 @@ import 'dart:async';
 enum RinoState { idle, running, hit, hitWall, appearing, disappearing }
 
 class Rino extends SpriteAnimationGroupComponent
-    with HasGameRef<MyGame>, CollisionCallbacks {
+    with HasGameReference<MyGame>, CollisionCallbacks {
   Rino({
     position,
   }) : super(position: position);
@@ -138,7 +138,7 @@ class Rino extends SpriteAnimationGroupComponent
   }
 
   void _checkHorizontalCollisions() {
-    for (final block in gameRef.collisionBlocks) {
+    for (final block in game.collisionBlocks) {
       if (!block.isPlatform) {
         if (checkCollision(this, block)) {
           if (velocity.x > 0) {
@@ -165,7 +165,7 @@ class Rino extends SpriteAnimationGroupComponent
   }
 
   void _checkVerticalCollisions() {
-    for (final block in gameRef.collisionBlocks) {
+    for (final block in game.collisionBlocks) {
       if (block.isPlatform) {
         if (checkCollision(this, block)) {
           if (velocity.y > 0) {

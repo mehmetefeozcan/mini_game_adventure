@@ -5,7 +5,7 @@ import 'package:flame/components.dart';
 import 'package:mini_game_adventure/game/game.dart';
 
 class Trampoline extends SpriteAnimationComponent
-    with HasGameRef<MyGame>, CollisionCallbacks {
+    with HasGameReference<MyGame>, CollisionCallbacks {
   final double jumpSpeed;
   Trampoline({
     this.jumpSpeed = 100,
